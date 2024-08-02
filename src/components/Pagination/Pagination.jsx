@@ -1,85 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import React from 'react'
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-    const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
-    const [threshold, setThreshold] = useState(3);
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 640) {
-                setThreshold(2);
-            } else {
-                setThreshold(3);
-            }
-        };
-
-        handleResize();
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    const renderPageNumbers = () => {
-        let pages = [];
-
-        if (totalPages <= 2 * threshold + 1) {
-            pages = pageNumbers;
-        } else {
-            pages = pageNumbers.slice(0, threshold);
-
-            if (currentPage > threshold + 1) {
-                pages.push('...');
-            }
-
-            if (currentPage > threshold && currentPage <= totalPages - threshold) {
-                pages.push(currentPage);
-            }
-
-            if (currentPage < totalPages - threshold) {
-                pages.push('...');
-            }
-
-            pages = pages.concat(pageNumbers.slice(totalPages - threshold));
-        }
-
-        return pages;
-    };
-
+const Pagination = ({ totalPages, currentPage, handlePageNumber }) => {
+    const handlePageChange = (e) => {
+        handlePageNumber(Number(e.target.value));
+    }
+    
+    const handleNextPage = (e) => {
+        if (currentPage == totalPages) alert('You are on last page');
+        handlePageNumber(currentPage + 1);
+    }
+    
+    const handlePreviousPage = (e) => {
+        if (currentPage == 1) alert('You are on first page');
+        handlePageNumber(currentPage - 1);
+    }
     return (
-        <div className={`flex justify-center bg-[#FFFF] ${totalPages === 0 ? 'hidden' : ''}`}>
-            <button
-                onClick={() => onPageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className={`flex items-center sm:text-[16px] text-sm text-[#817F7F] bg-white rounded ${currentPage === 1 ? 'cursor-not-allowed' : ''}`}
-            >
-                <MdOutlineKeyboardArrowLeft className='sm:mr-2 mr-0' />
-                <span>Previous</span>
-            </button>
-            {renderPageNumbers().map((number, index) => (
-                <button
-                    key={index}
-                    onClick={() => number !== '...' && onPageChange(number)}
-                    disabled={number === '...'}
-                    className={`sm:px-4 sm:py-2 px-2 m-1 rounded ${currentPage === number ? 'bg-[#14967F] text-white' : 'bg-white border text-gray-700'}`}
-                >
-                    {number}
-                </button>
-            ))}
-            <button
-                onClick={() => onPageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className={`flex items-center sm:text-[16px] text-sm text-[#817F7F] bg-white rounded ${currentPage === totalPages ? 'cursor-not-allowed' : ''}`}
-            >
-                <span>Next</span>
-                <MdKeyboardArrowRight className='sm:ml-2 ml-0' />
-            </button>
+        <div className="flex items-center justify-center px-4 py-3 sm:px-6">
+            <div className="flex flex-1 items-center justify-center gap-x-1">
+                <button className={`rounded px-2 py-2 mr-4 text-secondary hover:${currentPage !== 1 ? 'bg-secondary-extra-light' : ''} focus:z-20 focus:outline-offset-0 disabled:opacity-60`} disabled={currentPage == 1 ? true : false} onClick={handlePreviousPage}>Previous</button>
+                {totalPages > 0 ?
+                            // Array.from({ length: totalPages }, (_, index) => (
+                            //     index < 3 ?
+                            //         <button value={index + 1} onClick={e => handlePageChange(e)} className={`relative z-10 inline-flex items-center ${index + 1 == currentPage ? 'bg-primary text-white' : 'bg-white text-secondary hover:bg-primary hover:text-white'}  px-4 py-2 ml-2 first:ml-0 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}>{index + 1}</button>
+                            //         : null
+                            // )) 
+                            <>
+                            <button value={currentPage} onClick={e => handlePageChange(e)} className={`relative z-10 inline-flex items-center bg-primary text-white px-4 py-2 ml-2 first:ml-0 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}>{currentPage}</button>
+                            {
+                            currentPage != totalPages ? 
+                            <button value={currentPage + 1} onClick={e => handlePageChange(e)} className={`relative z-10 inline-flex items-center bg-white text-secondary hover:bg-primary hover:text-white px-4 py-2 ml-2 first:ml-0 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}>{currentPage + 1}</button>
+                            : null
+                            }
+                            {
+                            currentPage != totalPages - 1 && currentPage != totalPages ? 
+                            <button value={currentPage + 2} onClick={e => handlePageChange(e)} className={`relative z-10 inline-flex items-center bg-white text-secondary hover:bg-primary hover:text-white px-4 py-2 ml-2 first:ml-0 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}>{currentPage + 2}</button>
+                            : null
+                            }
+                            </>
+                            : null
+                        }
+                        {
+                            totalPages > 3 && currentPage != totalPages ? 
+                            <>
+                            
+                            <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700  focus:outline-offset-0">...</span>
+                            <button value={totalPages} onClick={e => handlePageChange(e)} className={`relative z-10 inline-flex items-center ${totalPages == currentPage ? 'bg-primary text-white' : 'bg-white text-secondary hover:bg-primary hover:text-white'}  px-4 py-2 ml-2 first:ml-0 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}>{totalPages}</button>
+                            </>
+                            : null
+                        }
+                        <button className={`rounded px-2 py-2 mr-4 text-secondary hover:${currentPage !== totalPages ? 'bg-secondary-extra-light' : ''} focus:z-20 focus:outline-offset-0 disabled:opacity-60`} disabled={currentPage == totalPages ? true : false} onClick={handleNextPage}>Next</button>
+            </div>
         </div>
-    );
-};
+    )
+}
 
-export default Pagination;
+export default Pagination

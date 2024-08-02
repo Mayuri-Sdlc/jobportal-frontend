@@ -1,0 +1,96 @@
+[
+    {
+      "question": "What defines an alternative investment? ",
+      "options": [
+        {
+          "a": "Traditional investment types like stocks, bonds, and cash equivalents."
+        },
+        {
+          "b": "Only real estate properties and crowdfunding platforms."
+        },
+        {
+          "c": "Financial assets that don't fit the standard categories such as equities, fixed income securities, or cash."
+        },
+        { "d": "Guaranteed capital preservation." }
+      ],
+      "answer": "c",
+      "explain": "The chapter defines alternative investments as financial assets that don't fall under traditional investment categories such as equities, fixed income securities, or cash."
+    },
+    {
+        "question": "Why are alternative investments generally preferred by institutional investors or high-net-worth individuals?  ",
+        "options": [
+          {
+            "a": "Because they offer the highest returns always."
+          },
+          {
+            "b": " Due to their intricate nature, regulatory ambiguity, and inherent level of risk."
+          },
+          {
+            "c": "They are highly liquid and easy to trade."
+          },
+          { "d": "Because they are free of any management or transaction fees." }
+        ],
+        "answer": "b",
+        "explain": "The chapter mentions that the bias towards institutional investors or high-net-worth individuals is because of the intricate nature, regulatory ambiguity, and inherent level of risk associated with alternative investments."
+      },
+      {
+        "question": " Which of the following is NOT a characteristic of alternative investments? ",
+        "options": [
+          {
+            "a": "Generally associated with less transparency."
+          },
+          {
+            "b": "Relatively illiquid compared to traditional counterparts."
+          },
+          {
+            "c": "Always ensures guaranteed returns."
+          },
+          { "d": "May have high initial investment requirements and fee structures." }
+        ],
+        "answer": "c",
+        "explain": "The chapter discusses various aspects of alternative investments, including their lack of transparency, illiquidity, and potential for high fees. However, it does not state that they guarantee returns."
+      },
+    
+      {
+        "question": "Which alternative investment offers potential capital appreciation and stable cash flow from operational income? ",
+        "options": [
+          {
+            "a": "Commodities"
+          },
+          {
+            "b": "Real estate"
+          },
+          {
+            "c": "Artworks and antiques"
+          },
+          { "d": "Cryptocurrencies" }
+        ],
+        "answer": "b",
+        "explain": "The chapter highlights that real estate investments can provide potential capital appreciation and also generate stable cash flow from operational income."
+      },
+        
+      {
+        "question": "What might be a challenge for investors considering alternative investments? ",
+        "options": [
+          {
+            "a": "They always have very low fees compared to traditional investments."
+          },
+          {
+            "b": "They are very transparent with a lot of verifiable performance data."
+          },
+          {
+            "c": " The complexity of alternative investments can be hard for investors to understand."
+          },
+          { "d": "They are very liquid and easy to sell anytime." }
+        ],
+        "answer": "b",
+        "explain": "The chapter mentions that some alternative investments may have intricate structures and terms that can be challenging for investors to grasp, thereby increasing the risk of uninformed decisions."
+      }
+    
+    
+  
+
+   
+    
+  ]
+  

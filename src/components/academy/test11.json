@@ -1,0 +1,91 @@
+[
+    {
+      "question": "Stocks represent ownership in a:",
+      "options": [
+        {
+          "a": "Government organisation"
+        },
+        {
+          "b": "Non-profit organisation"
+        },
+        {
+          "c": " Corporation"
+        },
+        { "d": "Mutual fund" }
+      ],
+      "answer": "c",
+      "explain": " Stocks, also known as equities, symbolise ownership in a corporation. When you own stocks, you hold a fraction of the issuing corporation."
+    },
+    {
+        "question": "What is the purpose of stock exchanges?",
+        "options": [
+          {
+            "a": "To regulate government securities"
+          },
+          {
+            "b": "To facilitate buying and selling of stocks"
+          },
+          {
+            "c": "To issue new stocks to the public"
+          },
+          { "d": "To provide loans to corporations" }
+        ],
+        "answer": "b",
+        "explain": "Stock exchanges serve as marketplaces where stocks are predominantly bought and sold. They facilitate transactions between buyers and sellers of stocks."
+      },
+      {
+        "question": "Which of the following statements about common stock is true?",
+        "options": [
+          {
+            "a": "Common stockholders have a higher claim on assets and earnings"
+          },
+          {
+            "b": "Common stockholders do not have voting rights."
+          },
+          {
+            "c": "Common stockholders receive dividends before preferred stockholders."
+          },
+          { "d": "Common stockholders have voting rights and can receive dividends" }
+        ],
+        "answer": "d",
+        "explain": "Common stock provides owners with voting rights in shareholder meetings and the opportunity to receive dividends distributed by the corporation."
+      },
+      {
+        "question": "Which financial instrument represents ownership in a company?",
+        "options": [
+          {
+            "a": "Stocks"
+          },
+          {
+            "b": "Bonds"
+          },
+          {
+            "c": "Mutual Funds"
+          },
+          { "d": "Options" }
+        ],
+        "answer": "a",
+        "explain": "Stocks represent ownership in a corporation, while bonds function as loans made by creditors to the corporation."
+      },
+
+      {
+        "question": "How can shareholders earn money through stock ownership?",
+        "options": [
+          {
+            "a": " By receiving dividends and capital appreciation"
+          },
+          {
+            "b": "By receiving interest payments and capital appreciation"
+          },
+          {
+            "c": "By receiving dividends and interest payments"
+          },
+          { "d": "By receiving interest payments and capital depreciation" }
+        ],
+        "answer": "a",
+        "explain": " Shareholders can earn money through dividends, which are cash distributions of company profits, and capital appreciation, which refers to the increase in the stock's price over time."
+      }
+    
+    
+  ]
+  

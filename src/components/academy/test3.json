@@ -1,0 +1,80 @@
+[
+  {
+    "question": "The time value of money (TVM) concept states that:",
+    "options": [
+      {
+        "a": "A sum of money today is worth more than the same sum in the future."
+      },
+      {
+        "b": "A sum of money in the future is worth more than the same sum today."
+      },
+      {
+        "c": "A sum of money today holds the same value as the same sum in the future."
+      },
+      { "d": "The value of money remains constant over time." }
+    ],
+    "answer": "a",
+    "explain": "The time value of money concept reveals that a sum of money today holds greater worth than an identical sum in the future due to the potential earnings that can be generated during the interim period."
+  },
+  {
+    "question": "What is the present value (PV) formula used to calculate the current value of a future sum of money?",
+    "options": [
+      { "a": "PV = FV * (1 + r)^T" },
+      {
+        "b": "PV = FV / (1 + r)^T"
+      },
+      {
+        "c": "PV = FV * (1 - r)^T"
+      },
+      { "d": "PV = FV / (1 - r)^T" }
+    ],
+    "answer": "b",
+    "explain": "The present value (PV) formula is used to calculate the current value of a future sum of money. It involves dividing the future value (FV) by (1 + r)^T, where r is the rate of return and T is the number of periods."
+  },
+  {
+    "question": "What does inflation do to the purchasing power of money over time?",
+    "options": [
+      { "a": "Inflation increases the purchasing power of money." },
+      {
+        "b": "Inflation decreases the purchasing power of money."
+      },
+      { "c": "Inflation has no impact on the purchasing power of money." },
+      { "d": "Inflation stabilises the purchasing power of money." }
+    ],
+    "answer": "b",
+    "explain": "Inflation is the process in which prices of goods and services rise over time. When money is not spent today, its purchasing power diminishes in the future due to the eroding effect of inflation."
+  },
+
+  {
+    "question": "The discount rate used in present value calculations represents:",
+    "options": [
+      {
+        "a": "The rate of inflation."
+      },
+      {
+        "b": "The rate of return on an investment."
+      },
+      {
+        "c": "The risk associated with the investment."
+      },
+      {
+        "d": "The rate of economic growth."
+      }
+    ],
+    "answer": "b",
+    "explain": "The discount rate used in present value calculations represents the rate of return that could be earned on the funds over the period. It is the opportunity cost associated with accepting a future payment instead of the same amount today."
+  },
+  {
+    "question": "What is the future value (FV) formula used to calculate the value of an investment over time using a compounded interest rate?",
+    "options": [
+      { "a": "FV = I × ((1 +R)^T)" },
+      {
+        "b": "FV = I / (1 + (R × T))"
+      },
+      { "c": "FV = I × (1 - (R × T))" },
+      { "d": "FV = I / (1 - (R × T))" }
+    ],
+    "answer": "a",
+    "explain": "The future value (FV) formula is used to calculate the value of an investment over time. It involves multiplying the initial investment amount (I) by  ((1 +R)^T), where R is the interest rate and T is the number of years."
+  }
+]

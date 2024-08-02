@@ -1,0 +1,78 @@
+[
+  {
+    "question": "What is the primary negative effect of inflation on savings?",
+    "options": [
+      { "a": "It increases the interest rate." },
+      {
+        "b": "It decreases the purchasing power."
+      },
+      { "c": " It creates a financial bubble." },
+      { "d": "It causes a recession." }
+    ],
+    "answer": "b",
+    "explain": "Inflation erodes the purchasing power of money over time. As prices rise, the same amount of money can purchase less, effectively making your savings smaller."
+  },
+  {
+    "question": " What type of investment directly adjusts its value in response to changes in the inflation rate?",
+    "options": [
+      { "a": "Stocks" },
+      {
+        "b": "Bonds"
+      },
+      {
+        "c": "Real Estate Investment Trusts (REITs)"
+      },
+      { "d": "Treasury Inflation-Protected Securities (TIPS)" }
+    ],
+    "answer": "d",
+    "explain": "TIPS have a built-in mechanism that adjusts their value in response to changes in the inflation rate. As inflation rises, the value of these investments also rises, protecting your money from the effects of inflation."
+  },
+  {
+    "question": "Why are commodities considered a good hedge against inflation?",
+    "options": [
+      { "a": "Their price decreases in times of inflation." },
+      {
+        "b": "They provide high interest rates."
+      },
+      { "c": "Their price tends to rise with inflation." },
+      { "d": "They offer guaranteed returns." }
+    ],
+    "answer": "c",
+    "explain": "The price of commodities, such as grain, precious metals, oil, and natural gas, often rises with inflation. This rise is because the cost of products produced from these commodities also goes up."
+  },
+
+  {
+    "question": "Which index measures the performance of the U.S. bond market, including government, corporate, taxable, and municipal bonds?",
+    "options": [
+      {
+        "a": "The S&P 500"
+      },
+      {
+        "b": "The Dow Jones Industrial Average"
+      },
+      {
+        "c": "The Bloomberg Aggregate Bond Index"
+      },
+      {
+        "d": "The NASDAQ Composite"
+      }
+    ],
+    "answer": "c",
+    "explain": "The Bloomberg Aggregate Bond Index measures the performance of the entire U.S. bond market. It includes a wide range of bonds, including government, corporate, taxable, and municipal bonds."
+  },
+  {
+    "question": "How do Real Estate Investment Trusts (REITs) act as a hedge against inflation?",
+    "options": [
+      { "a": " By decreasing in value with inflation" },
+      {
+        "b": "By offering a fixed interest rate"
+      },
+      {
+        "c": "By increasing in value and generating higher rental income with inflation"
+      },
+      { "d": "By offering a guaranteed return on investment" }
+    ],
+    "answer": "c",
+    "explain": "REITs own and operate income-generating real estate properties. As property values and rental income tend to rise with inflation, REITs can generate higher returns, providing an effective hedge against inflation."
+  }
+]

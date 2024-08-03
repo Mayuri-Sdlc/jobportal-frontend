@@ -27,9 +27,9 @@ const Login = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const userData = { email, password}
+        const userData = { email, password }
         dispatch(login(userData))
-      }
+    }
 
     // function showPassword() {
     //     var x = document.getElementById("myInput");
@@ -48,7 +48,11 @@ const Login = () => {
         }
 
         if (isSuccess || user) {
-            history.push('/users');
+            if (user.roleId === 3) {
+                history.push('/user-onboarding');
+            } else {
+                history.push('/company-onboarding');
+            }
         }
 
         dispatch(reset())
@@ -96,7 +100,7 @@ const Login = () => {
                             className="w-full px-4 py-2 tracking-wide text-sm font-medium text-white transition-colors duration-200 transform bg-primary rounded disabled:opacity-60"
                             onClick={(e) => onSubmit(e)}
                             disabled={isLoading}
-                            //disabled={false}
+                        //disabled={false}
                         >
                             {/* {loading ? loader('Logging in...') : 'Login'} */}
                             {'Login'}

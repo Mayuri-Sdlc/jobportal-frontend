@@ -1,13 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import { Sidebar, Header, Loader } from '../../../components'
-import { getInvestorById, getPreferencesByInvestorId } from '../../../features/investor/investorSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getFounderById } from '../../../features/founder/founderSlice'
-import { getFundingHistoryByInvestorId } from '../../../features/fundingHistory/fundingHistorySlice'
-import { getAccountByUserId } from '../../../features/bank/bank.slice'
-import { getCardDetailsByUserId, getTransactionsByMangoPayId, getWalletByMangoPayId } from '../../../features/mangoPay/mangoPay.slice'
 import { getCompaniesByUserId } from '../../../features/company/company.slice'
 import { ProfileBasic, ProfileFounder, KybKyc, WalletTab, ProfilePortfolio, ProfileSyndicate, ProfileBasicInvestor, ProfileCompany, TeamMembers } from './index'
 
@@ -29,11 +24,11 @@ const UserProfile = () => {
   const mangoPayId = singleInvestor?.user?.mangoPayId;
 
   useEffect(() => {
-    if(openTab == 1) {
+    if (openTab == 1) {
       if (type == "investor") {
         dispatch(getInvestorById(id))
         dispatch(getPreferencesByInvestorId(id))
-      } 
+      }
       if (type == "founder") dispatch(getFounderById(id))
     }
     if (openTab == 2) {
@@ -189,15 +184,15 @@ const UserProfile = () => {
                     <div className="tab-content tab-space">
                       <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                         {singleInvestor?.user?.role?.type == "individual" ?
-                        <ProfileBasic investor={singleInvestor} preferences={preferences} preferencesLoading={preferencesLoading} openTab={openTab} />:
-                        <ProfileBasicInvestor investor={singleInvestor} preferences={preferences} preferencesLoading={preferencesLoading}/>}
+                          <ProfileBasic investor={singleInvestor} preferences={preferences} preferencesLoading={preferencesLoading} openTab={openTab} /> :
+                          <ProfileBasicInvestor investor={singleInvestor} preferences={preferences} preferencesLoading={preferencesLoading} />}
                       </div>
                       {singleInvestor?.user?.role?.type == "institutional" &&
                         <div className={openTab === 7 ? "block" : "hidden"} id="link7">
                           <ProfileCompany companies={companies} />
                         </div>}
                       <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                        <ProfilePortfolio investor={singleInvestor} history={history} historyLoading={historyLoading}/>
+                        <ProfilePortfolio investor={singleInvestor} history={history} historyLoading={historyLoading} />
                       </div>
                       <div className={openTab === 3 ? "block" : "hidden"} id="link3">
                         <ProfileSyndicate />

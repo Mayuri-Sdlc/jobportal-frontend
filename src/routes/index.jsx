@@ -8,10 +8,16 @@ import UserList  from '../pages/users/UserList';
 import CompanyList from '../pages/company/CompanyList';
 import EventList from '../pages/Events/EventsList';
 import JobPostList from '../pages/jobpost/JobPostList';
+import UserOnBoarding from '../pages/onboarding/UserOnBoarding';
+import CompanyOnBoarding from '../pages/onboarding/CompanyOnBoarding';
+// import { UserList } from '../pages/users/UserList';
+import { UserProfile } from '../pages/users/userDetails';
 
 const publicPages = [
   { exact: true, path: "/login", element: Login },
   { exact: true, path: "/signup", element: SignUp },
+  { exact: true, path: "/user-onboarding", element: UserOnBoarding },
+  { exact: true, path: "/company-onboarding", element: CompanyOnBoarding },
 ];
 
 const adminPages = [

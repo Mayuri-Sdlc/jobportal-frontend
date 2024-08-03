@@ -1,20 +1,22 @@
+import axios from 'axios';
 import { login, reset } from '../../features/auth/authSlice';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+import { Config } from "../../config/index"
 const SignUp = () => {
 
     const [data, setData] = useState({
-        first_name: '',
-        last_name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
-        role: '',
+        roleId: '',
     })
-
-    const { email, password } = data
+    const handleRoleChange = (e) => {
+        setData({ ...data, roleId: e.target.value });
+    };
 
     const onChange = (e) => {
         setData((prevState) => ({
@@ -28,10 +30,18 @@ const SignUp = () => {
 
     const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
-        const userData = { email, password }
-        dispatch(login(userData))
+        const registerPayload = {
+            ...data,
+            isEmailVerified: true,
+            country: "India",
+        }
+        const response = await axios.post(`${Config.API_URL}/auth/register`, registerPayload)
+        if (response.status) {
+            toast.success('User Registered Successfully')
+            history.push('/login');
+        }
     }
 
     // function showPassword() {
@@ -67,9 +77,19 @@ const SignUp = () => {
                     <div className="mb-4">
                         <label className="block text-xs font-medium text-secondary">First Name</label>
                         <input
-                            type="email"
-                            name='email'
-                            value={data.email}
+                            type="text"
+                            name='firstName'
+                            value={data.firstName}
+                            onChange={onChange}
+                            className="block w-full px-2 py-2 text-xs font-medium text-secondary bg-white border rounded focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-xs font-medium text-secondary">Last Name</label>
+                        <input
+                            type="text"
+                            name='lastName'
+                            value={data.lastName}
                             onChange={onChange}
                             className="block w-full px-2 py-2 text-xs font-medium text-secondary bg-white border rounded focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
@@ -104,6 +124,35 @@ const SignUp = () => {
                         </div> */}
                         </div>
                     </div>
+                    <div className="mb-4">
+                        <label className="block text-xs font-medium text-secondary">Role</label>
+                        <div className='relative flex items-center gap-2'>
+                            <label className='flex items-center gap-2' htmlFor="radio-user">
+                                <span>User</span>
+                                <input
+                                    type="radio"
+                                    id='radio-user'
+                                    name="role"
+                                    value="3"
+                                    className="radio"
+                                    checked={data.roleId === '3'}
+                                    onChange={handleRoleChange}
+                                />
+                            </label>
+                            <label className='flex items-center gap-2' htmlFor="radio-company">
+                                <span>Company</span>
+                                <input
+                                    type="radio"
+                                    id='radio-company'
+                                    name="role"
+                                    value="2"
+                                    className="radio"
+                                    checked={data.roleId === '2'}
+                                    onChange={handleRoleChange}
+                                />
+                            </label>
+                        </div>
+                    </div>
                     <div className="mt-6">
                         <button
                             className="w-full px-4 py-2 tracking-wide text-sm font-medium text-white transition-colors duration-200 transform bg-primary rounded disabled:opacity-60"
@@ -112,7 +161,7 @@ const SignUp = () => {
                         //disabled={false}
                         >
                             {/* {loading ? loader('Logging in...') : 'Login'} */}
-                            {'Login'}
+                            {'Sign up'}
                         </button>
 
                     </div>

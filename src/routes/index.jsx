@@ -14,6 +14,7 @@ import CompanyOnBoarding from '../pages/onboarding/CompanyOnBoarding';
 import { UserProfile } from '../pages/users/userDetails';
 import AdminDashboard from '../pages/dashboard/AdminDashboard';
 import MyJobs from '../pages/myJobs/MyJobs';
+import AllJobPostList from '../pages/jobpost/AllJobPostList';
 
 const publicPages = [
   { exact: true, path: "/login", element: Login },
@@ -29,6 +30,7 @@ const adminPages = [
   { exact: true, path: "/admin/users", element: UserList },
   { exact: true, path: "/admin/all-companies", element: CompanyList },
   { exact: true, path: "/admin/events/:id", element: EventList },
+  { exact: true, path: "/admin/all-job-posts", element: AllJobPostList },
   { exact: true, path: "/admin/job-posts/:id", element: JobPostList },
 ];
 

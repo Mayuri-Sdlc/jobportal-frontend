@@ -1,11 +1,8 @@
 import { Link, useHistory } from 'react-router-dom'
 import { Sidebar, Header, Loader, Pagination } from '../../components'
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getAllUsers } from '../../features/user/userSlice'
 import moment from 'moment/moment'
-import BlockUserModal from '../../components/Modals/BlockUserModal'
 import { FaEdit, FaEye } from 'react-icons/fa'
 import { apiPOST } from '../../utils/apiHelper'
 
@@ -14,17 +11,25 @@ const CompanyList = () => {
         id: 1
     }]
     const [companies,setAllCompanies] = useState([])
+    const [loading,setLoading]= useState(false)
 console.log("All Compsnies",companies)
 const getAllCompanies = async()=>{
+    setLoading(true)
 const response = await apiPOST(`/company/getall`)
 if(response?.data?.status==200){
   setAllCompanies(response?.data?.data)
+  setLoading(false)
 }
+setLoading(false)
+
 }
 
 useEffect(()=>{
   getAllCompanies()
 },[])
+
+if(loading)return <Loader/>
+
     return (
         <div className='flex h-screen overflow-hidden'>
             <Sidebar />
@@ -34,7 +39,7 @@ useEffect(()=>{
                     <div className="overflow-x-auto w-full">
                         <div className='flex flex-wrap items-center justify-between'>
                             <div className='pt-4'>
-                                <h3 className='font-bold text-xl text-secondary'>All companies <span className='text-xl font-bold text-secondary-light'>({users && users?.totalResults ? users.totalResults : 0})</span></h3>
+                                <h3 className='font-bold text-xl text-secondary'>All companies <span className='text-xl font-bold text-secondary-light'>({companies && companies?.length ? companies.length : 0})</span></h3>
                             </div>
                             <div className='pt-4'>
                                 <div className="text-sm font-normal breadcrumbs">

@@ -122,7 +122,7 @@ useEffect(()=>{
                             </td>
                             <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">
                               <div className='flex gap-3 items-center'>
-                                <img className='rounded-3xl w-10 h-10' src={item?.profilePic ? item.profilePic : 'https://img.freepik.com/premium-vector/user-customer-avatar-vector-illustration_276184-160.jpg?w=50'} alt="" />
+                                <img className='rounded-3xl w-10 h-10' src={item?.userProfiles[0]?.profilePic ? item?.userProfiles[0]?.profilePic : 'https://img.freepik.com/premium-vector/user-customer-avatar-vector-illustration_276184-160.jpg?w=50'} alt="" />
                                 <div>
                                   <h1 className='font-normal text-lg text-[#091E42] mr-2 whitespace-nowrap'><Link to={`/users/`}>{item.firstName} {item.lastName}</Link></h1>
                                 </div>

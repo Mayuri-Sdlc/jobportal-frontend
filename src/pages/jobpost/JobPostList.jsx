@@ -11,6 +11,8 @@ const JobPostList = () => {
     const param = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [allJobPosts,setAllJobPosts] = useState([])
+    const [loading,setLoading]= useState(false)
+
     console.log("UUU",allJobPosts)
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -20,19 +22,25 @@ const JobPostList = () => {
 
    
 const getAllJobPosts = async()=>{
+    setLoading(true)
     const payload = {
         companyId:param?.id
     }
 const response = await apiPOST(`/jobpost/getbycompany`,payload)
 if(response.data.status === 200){
     setAllJobPosts(response.data.data)
+    setLoading(false)
 }
 console.log("Events",response)
+setLoading(false)
 }
 
 useEffect(()=>{
     getAllJobPosts()
 },[isModalOpen])
+
+if(loading)return <Loader/>
+
     return (
         <div className='flex h-screen overflow-hidden'>
             <Sidebar />

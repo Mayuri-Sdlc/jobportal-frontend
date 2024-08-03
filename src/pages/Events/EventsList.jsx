@@ -11,6 +11,9 @@ const EventList = () => {
     const param = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [allEvents,setAllEvents] = useState([])
+    const [loading,setLoading]= useState(false)
+
+    
   console.log("UUU",allEvents)
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -19,19 +22,26 @@ const EventList = () => {
         id: 1
     }]
 const getAllEvents = async()=>{
+    setLoading(true)
     const payload = {
         companyId:param?.id
     }
 const response = await apiPOST(`/events/getall`,payload)
 if(response.data.status === 200){
     setAllEvents(response.data.data)
+    setLoading(false)
 }
+setLoading(false)
 console.log("Events",response)
+
 }
 
 useEffect(()=>{
   getAllEvents()
 },[isModalOpen])
+
+if(loading)return <Loader/>
+
     return (
         <div className='flex h-screen overflow-hidden'>
             <Sidebar />

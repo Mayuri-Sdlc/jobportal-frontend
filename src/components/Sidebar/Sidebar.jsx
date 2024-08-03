@@ -137,7 +137,7 @@ function Sidebar() {
                 </React.Fragment>
               </li>
 
-              {/* <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
+              <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
                 <React.Fragment>
                   <div
                     className={`block text-sidebar-profile truncate cursor-pointer transition duration-150 ${pathname.includes('events') ? 'opacity-100' : 'opacity-50'
@@ -145,7 +145,7 @@ function Sidebar() {
                   >
                     <div className="flex items-start justify-start gap-4">
                       <div className="flex items-center w-[25px]">
-                        {pathname.includes('events')
+                        {pathname.includes('all-events')
                           ? <svg width="16" height="23" viewBox="0 0 16 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.498 19.005H11.502C10.8405 20.5874 9.58238 21.8455 8 22.507C6.41762 21.8455 5.15947 20.5874 4.498 19.005ZM14 13.81L16 16.078V18.005H0V16.078L2 13.81V8.00499C2 4.51999 4.504 1.55799 8 0.459991C11.496 1.55799 14 4.52099 14 8.00499V13.809V13.81ZM8 10.005C8.53043 10.005 9.03914 9.79428 9.41421 9.4192C9.78929 9.04413 10 8.53542 10 8.00499C10 7.47456 9.78929 6.96585 9.41421 6.59078C9.03914 6.2157 8.53043 6.00499 8 6.00499C7.46957 6.00499 6.96086 6.2157 6.58579 6.59078C6.21071 6.96585 6 7.47456 6 8.00499C6 8.53542 6.21071 9.04413 6.58579 9.4192C6.96086 9.79428 7.46957 10.005 8 10.005Z" fill="white" />
                           </svg> :
@@ -165,7 +165,7 @@ function Sidebar() {
                             </span>
                             {toggleEvents &&
                               <>
-                                <div className='mt-5'><Link to="/admin/events">All Events</Link></div>
+                                <div className='mt-5'><Link to="/admin/all-events">All Events</Link></div>
 
                               </>
                             }
@@ -175,7 +175,7 @@ function Sidebar() {
                     </div>
                   </div>
                 </React.Fragment>
-              </li> */}
+              </li>
               <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
                 <React.Fragment>
                   <div

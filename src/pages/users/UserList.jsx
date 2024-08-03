@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import moment from 'moment/moment'
 import { apiGET, apiPOST } from '../../utils/apiHelper'
 import { FaEdit, FaEye } from 'react-icons/fa'
+import UserProfileModal from '../../components/Modals/UserProfileModal'
 
 const UserList = () => {
   const users = [{
@@ -12,8 +13,9 @@ const UserList = () => {
 }]
 const [allUsers,setAllUsers] = useState([])
 const [loading,setLoading]= useState(false)
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [selectUser, setSelectUser] = useState('');
 
-console.log("All users",allUsers)
 const getAllUsers = async()=>{
   setLoading(true)
 const response = await apiPOST(`/users/getall`)
@@ -23,6 +25,11 @@ if(response?.data?.status==200){
 }
 setLoading(false)
 }
+
+  const viewProfile = (item) => {
+    setIsModalOpen(true)
+    setSelectUser(item)
+  }
 
 useEffect(()=>{
   getAllUsers()
@@ -142,7 +149,7 @@ if(loading)return <Loader/>
                             <td className="flex gap-6 px-6 py-4 text-sm font-medium text-right whitespace-nowrap items-center">
                               <div className="cursor-pointer flex gap-2" >
                                 <FaEdit size={20} />
-                                <FaEye size={20} />
+                                <FaEye  onClick={()=>viewProfile(item)} size={20} />
                               </div>
                             </td>
                           </tr>)) :
@@ -159,6 +166,11 @@ if(loading)return <Loader/>
           </div>
         </div>
       </div>
+      <UserProfileModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        user={selectUser}
+      />
       {/* {showBlockModal && <BlockUserModal closeModal={closeModal} setShowBlockModal={setShowBlockModal} />} */}
     </div>
   )

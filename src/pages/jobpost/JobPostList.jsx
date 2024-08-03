@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Sidebar, Header, Loader, Pagination } from '../../components'
 
 import moment from 'moment/moment'
+import AddJobPostModal from '../../components/Modals/AddJobPostModal'
 
 const JobPostList = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
     const jobposts = [{
         id: 1
     }]
@@ -29,7 +34,7 @@ const JobPostList = () => {
                             </div>
                         </div>
                         <div className='flex justify-end'>
-                            <button className='bg-[#2626ea] text-white p-2 rounded-md'>Add Job Post</button>
+                            <button onClick={openModal}  className='bg-[#2626ea] text-white p-2 rounded-md'>Add Job Post</button>
                         </div>
                         <div className='flex flex-wrap justify-between items-center'>
                             <div className='py-4 flex items-center'>
@@ -147,6 +152,7 @@ const JobPostList = () => {
                 </div>
             </div>
             {/* {showBlockModal && <BlockUserModal closeModal={closeModal} setShowBlockModal={setShowBlockModal} />} */}
+            <AddJobPostModal isOpen={isModalOpen} onRequestClose={closeModal} />
         </div>
     )
 }

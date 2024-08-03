@@ -3,6 +3,7 @@ import companyService from './company.service'
 
 const initialState = {
     companies: [],
+    companyProfile: [],
     isError: false,
     isSuccess: false,
     isLoading: false,
@@ -36,6 +37,10 @@ export const companySlice = createSlice({
             state.isError = false
             state.message = ''
         },
+        addCompanyProfile: (state, action) => {
+            console.log(action.payload);
+            state.companyProfile = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -56,5 +61,5 @@ export const companySlice = createSlice({
     },
 })
 
-export const { reset } = companySlice.actions
+export const { reset, addCompanyProfile } = companySlice.actions
 export default companySlice.reducer

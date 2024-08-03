@@ -49,9 +49,17 @@ const Login = () => {
 
         if (isSuccess || user) {
             if (user.roleId === 3) {
-                history.push('/user-onboarding');
+                if (user?.userProfiles?.length === 0) {
+                    history.push('/user-onboarding');
+                } else {
+                    history.push('/home')
+                }
             } else if (user.roleId === 2) {
-                history.push('/company-onboarding');
+                if (user?.companies?.length === 0) {
+                    history.push('/company-onboarding');
+                } else {
+                    history.push('/company/home')
+                }
             } else {
                 history.push('/admin/dashboard');
             }

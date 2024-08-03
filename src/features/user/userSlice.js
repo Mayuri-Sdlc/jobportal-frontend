@@ -3,6 +3,7 @@ import userService from './userService'
 
 const initialState = {
   users: [],
+  userProfiles: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -54,6 +55,10 @@ export const userSlice = createSlice({
       state.isError = false
       state.message = ''
     },
+    addUserProfile: (state, action) => {
+      console.log(action.payload);
+      state.userProfiles = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -88,5 +93,5 @@ export const userSlice = createSlice({
   },
 })
 
-export const { reset } = userSlice.actions
+export const { reset, addUserProfile } = userSlice.actions
 export default userSlice.reducer

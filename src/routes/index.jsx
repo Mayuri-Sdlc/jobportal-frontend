@@ -16,6 +16,7 @@ import AdminDashboard from '../pages/dashboard/AdminDashboard';
 import MyJobs from '../pages/myJobs/MyJobs';
 import AllJobPostList from '../pages/jobpost/AllJobPostList';
 import AllEventList from '../pages/Events/AllEventList';
+import CompanyHome from '../pages/company/CompanyHome';
 
 const publicPages = [
   { exact: true, path: "/login", element: Login },
@@ -23,6 +24,7 @@ const publicPages = [
   { exact: true, path: "/user-onboarding", element: UserOnBoarding },
   { exact: true, path: "/company-onboarding", element: CompanyOnBoarding },
   { exact: true, path: "/myjobs", element: MyJobs },
+  { exact: true, path: "/company/home", element: CompanyHome },
 ];
 
 const adminPages = [

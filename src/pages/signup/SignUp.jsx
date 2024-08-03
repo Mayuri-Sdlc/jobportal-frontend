@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Config } from "../../config/index"
+import { apiPOST } from '../../utils/apiHelper';
 const SignUp = () => {
 
     const [data, setData] = useState({
@@ -37,7 +38,7 @@ const SignUp = () => {
             isEmailVerified: true,
             country: "India",
         }
-        const response = await axios.post(`${Config.API_URL}/auth/register`, registerPayload)
+        const response = await apiPOST(`${Config.API_URL}/auth/register`, registerPayload)
         if (response.status) {
             toast.success('User Registered Successfully')
             history.push('/login');

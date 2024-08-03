@@ -44,7 +44,7 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 {loggedInUser?.roleId === 3 ? <ul className="menu menu-horizontal p-0 space-x-4">
                     <li><a className="hover:text-primary" href="/home">Home</a></li>
-                    <li><a className="hover:text-primary" href="/about">My Jobs</a></li>
+                    <li><a className="hover:text-primary" href="/myjobs">My Jobs</a></li>
                     <li><a className="hover:text-primary" href="/services">Services</a></li>
                     <li><a className="hover:text-primary" href="/contact">Companies</a></li>
                     <li><a className="hover:text-primary" href="/explore">Explore</a></li>

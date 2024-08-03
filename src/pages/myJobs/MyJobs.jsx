@@ -5,6 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 // import Loading from "components/loading/loading";
 import { MdOutlineSimCardDownload } from "react-icons/md";
 // import Pagination from "components/pagination/pagination";
+import Navbar from "../../components/Navbar/Navbar";
 import { FcGoogle } from "react-icons/fc";
 // import { ReactComponent as Filtericon } from "../../images/dealroom/filter.svg";
 import { AiOutlineSearch, AiOutlineEye } from "react-icons/ai";
@@ -16,6 +17,9 @@ import moment from "moment";
 import { toast } from "react-toastify";
 import ReactModal from "react-modal";
 import FilePickInput from "../../components/filepickInput";
+import { BsPerson } from "react-icons/bs";
+import Button from "../../components/buttons/button";
+
 
 const MyJobs = () => {
   const { user } = useSelector((state) => state.user);
@@ -116,14 +120,12 @@ const MyJobs = () => {
   };
 
   const tableHeding = [
-    "",
-    "Amt. Invested",
-    "SPV",
+    "Job Post",
+    "Event",
+    "Date Time",
     "Status",
-    "Date of Investment",
-    "Transaction ID",
-    "Type",
     "Action",
+    
   ];
 
   const customStyles2 = {
@@ -215,27 +217,27 @@ const MyJobs = () => {
     return setSelected2(e.target.value);
   };
 
-  // const getlist = async () => {
-  //   setPageLoading(true);
-  //   console.log("current page=---", currentPage);
+  const getlist = async () => {
+    setPageLoading(true);
+  //  console.log("current page=---", currentPage);
 
-  //   const payload = {
-  //     options: {
-  //       page: currentPage,
-  //     },
-  //     filter: {
-  //       query: searchInp,
-  //       sort: selected2,
-  //     },
-  //   };
+    const payload = {
+      // options: {
+      //   page: currentPage,
+      // },
+      // filter: {
+      //   query: searchInp,
+      //   sort: selected2,
+      // },
+    };
 
-  //   const res = await apiPOST(`/v1/investment/user/${user.id}`, payload);
+    const res = await apiPOST(`/jobapply/mygetall`, payload);
 
-  //   console.log("res get list..", res.data.data.data.results);
-  //   setDocumentarr(res?.data?.data?.data?.results);
-  //   setTotal(res?.data?.data?.data?.totalResults);
-  //   setPageLoading(false);
-  // };
+    console.log("res get list..", res.data.data);
+    setDocumentarr(res?.data?.data);
+    //setTotal(res?.data?.data?.data?.totalResults);
+    setPageLoading(false);
+  };
 
   // useEffect(() => {
   //   const getData = setTimeout(() => {
@@ -252,6 +254,10 @@ const MyJobs = () => {
   //   }
   // };
 
+
+  useEffect(()=>{
+  getlist()
+  },[]);
   // useEffect(() => {
   //   document.addEventListener("click", handleClickOutside, true);
   //   return () => {
@@ -264,26 +270,11 @@ const MyJobs = () => {
     
       className="flex-1 min-h-[100vh] flex flex-col bg-white text-secondary relative"
     >
+       <Navbar />
       <div className={`relative overflow-hidden`}>
       
         <div>
-          <div
-            className={`sm:bg-primary bg-primaryVariant1 sm:mt-[18px] sm:w-[85%] flex items-center h-fit sm:h-[160px] bg-cover  mx-auto  headbox-background sm:bg-contain bg-no-repeat bg-right sm:border sm:rounded-md`}
-          >
-            <div className="flex flex-col   lg:w-[70%] ">
-              <p className="text-xl sm:text-3xl font-semibold  text-white  pl-[20px] pt-3 ">
-                Interview Queues
-
-              </p>
-
-              <p className=" text-sm sm:text-xl break-words text-white text-left pl-[20px] pt-2  pb-3">
-                {" "}
-                Jobs applied by me.
-                <br />
-              </p>
-            </div>
-            <div className="flex-1 absolute w-full h-24 right-0 hidden md:flex "></div>
-          </div>
+      
         </div>
 
         <div className=" mt-2.5 ">
@@ -301,9 +292,9 @@ const MyJobs = () => {
               <div className="flex justify-center">
                 <div className="">
                   <div className="relative flex gap-3 items-center">
-                    <div className="absolute inset-y-0 right-10 flex items-center pointer-events-none">
+                    {/* <div className="absolute inset-y-0 right-10 flex items-center pointer-events-none">
                       <AiOutlineSearch className="fill-gray-400 " size="20px" />
-                    </div>
+                    </div> */}
                     <div className="flex relative">
                       <input
                         className={`bg-transparent outline-none transition-all duration-300 ease-in-out ${
@@ -410,14 +401,16 @@ const MyJobs = () => {
               </div>
             </div>
 
+         
+
             <div className="max-w-[320px] sm:max-w-full mx-auto overflow-x-auto">
             
-            <FilePickInput/>
+            <p className="text-txt text-[25px]">Interview Queues</p>
               <table
-                className="overflow-x-auto leading-normal w-full border-separate border-spacing-y-2
-                "
+                className=" mt-5 overflow-x-auto leading-normal w-full border-separate border-spacing-y-2
+                 border-b-2"
               >
-                <thead className="">
+                 <thead className="">
                   <tr className="font-bold  text-black ">
                     {tableHeding.map((item, key) => {
                       return (
@@ -439,7 +432,7 @@ const MyJobs = () => {
                       );
                     })}
                   </tr>
-                </thead>
+                </thead> 
 
                 {pageLoading ? (
                   <div className="flex flex-1 absolute justify-center w-[80%] mt-28 items-center ">
@@ -451,42 +444,42 @@ const MyJobs = () => {
                       documentarr.map((item, index) => {
                         return (
                           // bydefault show table
-                          <tr ref={ref3} className=" bg-[#fafafa] rounded-md">
+                          <tr ref={ref3} className=" ">
                             <td className=" break-words text-lg">
                               <div className="flex ml-2 items-center break-words">
                                
-                                {item?.campaign?.logo ? (
+                                {item?.user?.userProfiles.length>0 && item?.user?.userProfiles[0]?.profilePic ? (
                                   <img
                                     className="w-10 h-10 rounded-full"
-                                    src={item?.campaign?.logo}
+                                    src={item?.jobPost?.company?.logo}
                                   />
                                 ) : (
                                   <div className="w-10 h-10 rounded-full bg-gray-300 flex justify-center items-center">
-                                    <FcGoogle
+                                    <BsPerson
                                       size={20}
                                       className="mt-1 text-black justify-center items-center"
                                     />
                                   </div>
                                 )}
-                                <div className="sm:w-full w-[50%] break-words">
-                                  {item?.campaign?.campaignName}
+                                <div className="ml-5 flex-col sm:w-full w-[50%] break-words">
+                                 {item?.jobPost?.company?.name}
+                                  <p>{item?.jobPost?.name}</p>
                                 </div>
                               </div>
                             </td>
-
-                            {/* {item.syndicateId==null? */}
-                            <td className="break-words text-left text-txt ">
-                              GBP{" "}
-                              {parseFloat(item?.amount).toLocaleString("en-US")}
+                             
+                            <td className="flex-col break-words text-left text-txt max-w-[120px] ">
+                              <b> {item?.jobPost?.event?.name}</b>
+                           
+                            </td>
+                          
+                            <td className="flex-col break-words text-left text-txt max-w-[120px] ">
+                              <b>Location: Pannel A</b>
+                              <br/>
+                               <p> {moment(item?.datetime).format("DD/MM/YYYY HH:mm a")}</p>
                             </td>
 
-                            <td className="break-words text-left text-txt max-w-[120px] ">
-                              {item?.syndicateId
-                                ? item?.syndicate?.spv
-                                : "Crowd Investments Nominee Limited"}
-                            </td>
-
-                            <td className="break-words">
+                            <td className="break-words flex-col justify-center  items-center">
                               <div
                                 className={`flex items-center  border font-semibold w-fit rounded-md px-2
                                   
@@ -494,295 +487,51 @@ const MyJobs = () => {
 
                                     
                                   
-                                  ${
-                                    item.adminStatus === "approved" &&
-                                    "text-green-700 bg-[#EAF6ED] border-[#cadd77]"
-                                  }
-
-                                  ${
-                                    item.adminStatus === "pending" &&
-                                    "text-[#F2C046]  bg-[#FFF9E8] border-[#FEE4A0]"
-                                  }
-                                  
-                                  ${
-                                    item.adminStatus === "rejected" &&
-                                    "text-red bg-[#ecd3d3] border-[#f3c5c5]"
-                                  }
+                                 
                                
                                   `}
                               >
                                 <div
                                   className={`h-2 w-2    
                                      ${
-                                       item.adminStatus == "approved" &&
+                                       item.status == "approved" &&
                                        "bg-green-700 rounded-full"
                                      }
                                      ${
-                                       item.adminStatus == "pending" &&
+                                       item.status == "pending" &&
                                        "bg-[#F2C046] rounded-full"
                                      }
                                      ${
-                                       item.adminStatus == "rejected" &&
+                                       item.status == "rejected" &&
                                        "bg-red rounded-full"
                                      }
                                   
                                   `}
                                 ></div>
-                                <p>
-                                  {item?.adminStatus == "pending"
-                                    ? "REVIEWING"
-                                    : item?.adminStatus?.toUpperCase()}
+                                <p className="self-center">
+                                  {item?.status == "pending"
+                                    ? "APPLICATION SUBMITTED"
+                                    : item?.status?.toUpperCase()}
                                 </p>
                               </div>
                             </td>
-                            <td className=" break-words text-left text-txt">
-                              {moment(item?.createdDate).format("DD/MM/YYYY")}
+                            <td className="flex  break-words text-right text-txt">
+                             <Button title="View Details"/>
+
                             </td>
+                         
+                          
 
-                            <td className="break-words  text-left text-txt">
-                              {item?.transaction_id
-                                ? item?.transaction_id
-                                : "----"}
-                            </td>
-
-                            {item?.syndicateId ? (
-                              <td
-                                onClick={() => {
-                                  setCurrentSyndicateId(item?.syndicateId);
-                                  setShowModalsyn(true);
-                                }}
-                                className="break-words cursor-pointer text-left  text-txt"
-                              >
-                                Syndicate
-                              </td>
-                            ) : (
-                              <td className="break-words  text-left  text-txt">
-                                Individual
-                              </td>
-                            )}
-
-                            <td
-                              id={"tablerow" + index}
-                              className=" relative text-left text-txt"
-                            >
-                              <div className="flex ">
-                                <AiOutlineEye
-                                  onClick={() => {
-                                    console.log("yes clicked-----------")
-                                    setCurrentItem(item);
-                                    openModal();
-                                  }}
-                                  className=" text-black cursor-pointer mt-1 w-6 h-6"
-                                />
-
-                                <div
-                                  ref={ref1}
-                                  onClick={() => {
-                                    setcurrenIndex(index);
-
-                                    console.log(
-                                      "ref2----------",
-                                      document
-                                        .getElementById(`tablerow${index}`)
-                                        .getBoundingClientRect()
-                                    );
-                                    let temp = document
-                                      .getElementById(`tablerow${index}`)
-                                      .getBoundingClientRect();
-
-                                    let element = document.getElementById(
-                                      `tablerow${index}`
-                                    );
-
-                                    setLeft(temp?.left - 100);
-                                    setTop(temp?.top);
-                                    setBottom(temp?.bottom);
-                                    setModalw(temp?.width);
-
-                                    const windowHeight = window.innerHeight;
-                                    const scrollY = window.scrollY;
-
-                                    // Get the scroll position of the element
-                                    const elementScrollTop = element.scrollTop;
-
-                                    // Get the total height of the scrollable content within the element
-                                    const elementScrollHeight =
-                                      element.scrollHeight;
-
-                                    // Get the height of the visible portion of the element
-                                    const elementClientHeight =
-                                      element.clientHeight;
-
-                                    // Check if the element is at the bottom of the scrollable content
-                                    let check =
-                                      elementScrollTop + elementClientHeight >=
-                                      elementScrollHeight;
-                                    console.log(
-                                      "checker============",
-                                      elementScrollTop,
-                                      elementClientHeight,
-                                      elementScrollHeight,
-                                      check
-                                    );
-
-                                    // Check if the element's bottom position is near the bottom of the viewport
-                                    const isAtPageEnd =
-                                      temp.bottom >= window.innerHeight;
-
-                                    setIslast(isAtPageEnd);
-
-                                    console.log(
-                                      "check",
-                                      isAtPageEnd,
-                                      temp.bottom,
-                                      windowHeight,
-                                      scrollY,
-                                      windowHeight + scrollY
-                                    );
-
-                                    //  window.scrollTo({top: temp?.top, left: temp?.left, behavior: 'smooth'});
-                                    openModal2();
-                                  }}
-                                  className="cursor-pointer flex gap-4  w-fit rounded-md px-2 "
-                                >
-                                  <MdOutlineSimCardDownload
-                                    size={20}
-                                    className="mt-1.5 text-black"
-                                  />
-                                  <IoIosArrowDown className="h-4 w-4 mt-1.5 fill-[#000000] justify-items-center " />
-                                </div>
-
-                                {currentIndex == index &&
-                                modal2 &&
-                                item?.attachment ? (
-                                  <ReactModal
-                                    isOpen={currentIndex == index && modal2}
-                                    onRequestClose={() => {
-                                      closeModal2();
-                                    }}
-                                    style={
-                                      islast ? customStyles3 : customStyles2
-                                    }
-                                  >
-                                    <div
-                                      ref={ref2}
-                                      id="popup"
-                                      className="w-full h-[100px] textarea-with-custom-scrollbar  overflow-y-scroll overflow-x-hidden "
-                                    >
-                                      {item?.receipt != null ? (
-                                        <div
-                                          onClick={(e) => {
-                                            console.log(
-                                              "receipt--------",
-                                              item?.receipt
-                                            );
-                                            const decodedString =
-                                              decodeURIComponent(item?.receipt);
-                                            const text = decodedString;
-
-                                            const word = "com/";
-
-                                            const array = text.split(word); // ['This is ', ' text...']
-                                            const result = array.pop();
-
-                                            DownloadPrivateDocs(result);
-                                            setcurrenIndex(null);
-                                            setModal2(false);
-                                          }}
-                                          className="hover:text-primary no-underline cursor-pointer text-txt text-left  mt-1 ml-1 "
-                                        >
-                                          Investment Receipt
-                                        </div>
-                                      ) : null}
-
-                                      {item?.dealsheet != null ? (
-                                        <div
-                                          onClick={(e) => {
-                                            console.log(
-                                              "receipt--------",
-                                              item?.dealsheet
-                                            );
-                                            const decodedString =
-                                              decodeURIComponent(
-                                                item?.dealsheet
-                                              );
-                                            const text = decodedString;
-
-                                            const word = "com/";
-
-                                            const array = text.split(word); // ['This is ', ' text...']
-                                            const result = array.pop();
-
-                                            DownloadPrivateDocs(result);
-                                            setcurrenIndex(null);
-                                            setModal2(false);
-                                          }}
-                                          className="hover:text-primary no-underline cursor-pointer text-txt text-left  mt-1 ml-1 "
-                                        >
-                                          Deal Sheet
-                                        </div>
-                                      ) : null}
-
-                                      {item?.campDoc != null ? (
-                                        <div
-                                          onClick={(e) => {
-                                            const decodedString =
-                                              decodeURIComponent(item?.campDoc);
-                                            const text = decodedString;
-
-                                            const word = "com/";
-
-                                            const array = text.split(word); // ['This is ', ' text...']
-                                            const result = array.pop();
-
-                                            DownloadPrivateDocs(result);
-                                            setcurrenIndex(null);
-                                            setModal2(false);
-                                          }}
-                                          className="hover:text-primary no-underline cursor-pointer text-txt text-left mt-2 ml-1 "
-                                        >
-                                          Beneficial Ownership Certificate
-                                        </div>
-                                      ) : null}
-
-                                      {item?.attachment
-                                        ?.split(",")
-                                        .map((proof, index) => {
-                                          return (
-                                            <div
-                                              onClick={(e) => {
-                                                const decodedString =
-                                                  decodeURIComponent(proof);
-                                                const text = decodedString;
-
-                                                const word = "com/";
-
-                                                const array = text.split(word); // ['This is ', ' text...']
-                                                const result = array.pop();
-
-                                                DownloadPrivateDocs(result);
-                                                setcurrenIndex(null);
-                                                setModal2(false);
-                                              }}
-                                              className="hover:text-primary no-underline cursor-pointer text-txt text-left mt-2 ml-1 "
-                                            >
-                                              {proof
-                                                ?.split("/")
-                                                ?.pop()
-                                                .substring(13)}
-                                            </div>
-                                          );
-                                        })}
-                                    </div>
-                                  </ReactModal>
-                                ) : null}
-                              </div>
-                            </td>
+                        
+                                      
+                                     
                           </tr>
                         );
                       })}
                   </tbody>
                 )}
+                  
+
               </table>
               {!pageLoading && documentarr?.length === 0 ? (
                 <div className="flex justify-center  mt-24 items-center">
@@ -795,7 +544,7 @@ const MyJobs = () => {
 
             {/* pagination */}
 
-            {documentarr?.length > 0 ? (
+            {/* {documentarr?.length > 0 ? (
               <div
                 className={`flex place-content-end ${
                   pageLoading ? "mt-56" : "mt-5"
@@ -815,7 +564,7 @@ const MyJobs = () => {
                   pageLoading ? "mt-56" : "mt-5"
                 }`}
               ></div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

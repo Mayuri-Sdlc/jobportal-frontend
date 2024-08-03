@@ -10,13 +10,14 @@ import EventList from '../pages/Events/EventsList';
 import JobPostList from '../pages/jobpost/JobPostList';
 import UserOnBoarding from '../pages/onboarding/UserOnBoarding';
 import CompanyOnBoarding from '../pages/onboarding/CompanyOnBoarding';
-// import { UserList } from '../pages/users/UserList';
 import { UserProfile } from '../pages/users/userDetails';
 import AdminDashboard from '../pages/dashboard/AdminDashboard';
 import MyJobs from '../pages/myJobs/MyJobs';
+
 import AllJobPostList from '../pages/jobpost/AllJobPostList';
 import AllEventList from '../pages/Events/AllEventList';
-import CompanyHome from '../pages/company/CompanyHome';
+
+import EventDetails from '../pages/home/EventDetails';
 
 const publicPages = [
   { exact: true, path: "/login", element: Login },
@@ -24,7 +25,12 @@ const publicPages = [
   { exact: true, path: "/user-onboarding", element: UserOnBoarding },
   { exact: true, path: "/company-onboarding", element: CompanyOnBoarding },
   { exact: true, path: "/myjobs", element: MyJobs },
+
   { exact: true, path: "/company/home", element: CompanyHome },
+
+  { exact:true, path:"/home",element:Home},
+  { exact:true, path: "/eventdetails/:id", element: EventDetails }
+
 ];
 
 const adminPages = [

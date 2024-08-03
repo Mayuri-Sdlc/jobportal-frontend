@@ -1,5 +1,9 @@
+import { Header } from "../../components";
 import React from "react";
 const UserOnBoarding = () => {
-    return <div>UserOnBoarding</div>
+    return <div>
+        <Header />
+        UserOnBoarding
+    </div>
 }
 export default UserOnBoarding

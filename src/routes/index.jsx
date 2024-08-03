@@ -4,7 +4,7 @@ import AuthMiddleware from '../middleware/AuthMiddleware';
 import SignUp from '../pages/signup/SignUp';
 import Login from '../pages/login/Login';
 import Home from '../pages/home/Home';
-import UserList  from '../pages/users/UserList';
+import UserList from '../pages/users/UserList';
 import CompanyList from '../pages/company/CompanyList';
 import EventList from '../pages/Events/EventsList';
 import JobPostList from '../pages/jobpost/JobPostList';
@@ -12,6 +12,7 @@ import UserOnBoarding from '../pages/onboarding/UserOnBoarding';
 import CompanyOnBoarding from '../pages/onboarding/CompanyOnBoarding';
 // import { UserList } from '../pages/users/UserList';
 import { UserProfile } from '../pages/users/userDetails';
+import AdminDashboard from '../pages/dashboard/AdminDashboard';
 
 const publicPages = [
   { exact: true, path: "/login", element: Login },
@@ -21,11 +22,12 @@ const publicPages = [
 ];
 
 const adminPages = [
-  { exact: true, path: "/", element: Home },
-  { exact: true, path: "/users", element: UserList },
-  { exact: true, path: "/all-companies", element: CompanyList },
-  { exact: true, path: "/events", element: EventList },
-  { exact: true, path: "/job-posts", element: JobPostList },
+  { exact: true, path: "/admin/home", element: Home },
+  { exact: true, path: "/admin/dashboard", element: AdminDashboard },
+  { exact: true, path: "/admin/users", element: UserList },
+  { exact: true, path: "/admin/all-companies", element: CompanyList },
+  { exact: true, path: "/admin/events", element: EventList },
+  { exact: true, path: "/admin/job-posts", element: JobPostList },
 ];
 
 const Routes = () => {

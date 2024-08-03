@@ -86,7 +86,7 @@ function Sidebar() {
                             </span>
                             {toggleUser &&
                               <>
-                                <div className='mt-5'><Link to="/users">All Users</Link></div>
+                                <div className='mt-5'><Link to="/admin/users">All Users</Link></div>
                               </>
                             }
                           </div>
@@ -96,7 +96,7 @@ function Sidebar() {
                   </div>
                 </React.Fragment>
               </li>
-              
+
               <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
                 <React.Fragment>
                   <div
@@ -125,8 +125,8 @@ function Sidebar() {
                             </span>
                             {toggleCompany &&
                               <>
-                                <div className='mt-5'><Link to="/all-companies">All Companies</Link></div>
-                          
+                                <div className='mt-5'><Link to="/admin/all-companies">All Companies</Link></div>
+
                               </>
                             }
                           </div>
@@ -165,8 +165,8 @@ function Sidebar() {
                             </span>
                             {toggleEvents &&
                               <>
-                                <div className='mt-5'><Link to="/events">All Events</Link></div>
-                          
+                                <div className='mt-5'><Link to="/admin/events">All Events</Link></div>
+
                               </>
                             }
                           </div>
@@ -204,8 +204,8 @@ function Sidebar() {
                             </span>
                             {toggleJobPost &&
                               <>
-                                <div className='mt-5'><Link to="/job-posts">All Job Post</Link></div>
-                          
+                                <div className='mt-5'><Link to="/admin/job-posts">All Job Post</Link></div>
+
                               </>
                             }
                           </div>
@@ -218,7 +218,7 @@ function Sidebar() {
               <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
                 <React.Fragment>
                   <Link
-                    to="/roles"
+                    to="/admin/roles"
                     className={`block text-sidebar-profile truncate transition duration-150 ${pathname.includes('roles') ? 'opacity-100' : 'opacity-50'
                       }`}
                   >
@@ -246,7 +246,7 @@ function Sidebar() {
               <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
                 <React.Fragment>
                   <Link
-                    to="/history"
+                    to="/admin/history"
                     className={`block text-sidebar-profile truncate transition duration-150 ${pathname.includes('history') ? 'opacity-100' : 'opacity-50'
                       }`}
                   >

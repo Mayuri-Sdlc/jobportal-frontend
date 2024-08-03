@@ -50,8 +50,10 @@ const Login = () => {
         if (isSuccess || user) {
             if (user.roleId === 3) {
                 history.push('/user-onboarding');
-            } else {
+            } else if (user.roleId === 2) {
                 history.push('/company-onboarding');
+            } else {
+                history.push('/admin/dashboard');
             }
         }
 

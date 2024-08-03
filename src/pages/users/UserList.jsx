@@ -7,6 +7,7 @@ import { getAllUsers } from '../../features/user/userSlice'
 import moment from 'moment/moment'
 import BlockUserModal from '../../components/Modals/BlockUserModal'
 import { apiGET, apiPOST } from '../../utils/apiHelper'
+import { FaEdit, FaEye } from 'react-icons/fa'
 
 const UserList = () => {
   const users = [{
@@ -134,17 +135,9 @@ useEffect(()=>{
                             <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.role.mainRole}</td>
                             <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{moment(item.createdDate).format('ddd MMM DD YYYY')} <br /><small>{moment(item.createdDate).format('HH:mm:ss Z')}</small></td>
                             <td className="flex gap-6 px-6 py-4 text-sm font-medium text-right whitespace-nowrap items-center">
-                              <div className="cursor-pointer" onClick={() => openModal()}>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M12 10C14.2091 10 16 8.20914 16 6C16 3.79086 14.2091 2 12 2C9.79086 2 8 3.79086 8 6C8 8.20914 9.79086 10 12 10Z" stroke="#444444" strokeWidth="1.5" /> <path d="M15 13.327C14.0153 13.1068 13.009 12.9971 12 13C7.582 13 4 15.015 4 17.5C4 19.985 4 22 12 22C17.687 22 19.331 20.982 19.807 19.5" stroke="#444444" strokeWidth="1.5" /> <path d="M20.8281 13.171C21.5783 13.9212 21.9997 14.9386 21.9997 15.9995C21.9997 17.0604 21.5783 18.0778 20.8281 18.828C20.0779 19.5782 19.0605 19.9996 17.9996 19.9996C16.9387 19.9996 15.9213 19.5782 15.1711 18.828L20.8281 13.172M15.1721 18.828C14.4219 18.0778 14.0005 17.0604 14.0005 15.9995C14.0005 14.9386 14.4219 13.9212 15.1721 13.171C15.9223 12.4208 16.9397 11.9994 18.0006 11.9994C19.0615 11.9994 20.0789 12.4208 20.8291 13.171" stroke="#444444" strokeWidth="1.5" strokeLinejoin="round" /> </svg>
-                              </div>
-                              <div className="dropdown dropdown-end">
-                                <label tabIndex={0} className="m-1 cursor-pointer">
-                                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.99295 7.80488C11.1834 7.80488 12.1358 8.78049 12.1358 10C12.1358 11.2195 11.1834 12.1951 9.99295 12.1951C8.80248 12.1951 7.8501 11.2195 7.8501 10C7.8501 8.78049 8.80248 7.80488 9.99295 7.80488ZM7.8501 2.19512C7.8501 3.41463 8.80248 4.39024 9.99295 4.39024C11.1834 4.39024 12.1358 3.41463 12.1358 2.19512C12.1358 0.97561 11.1834 0 9.99295 0C8.80248 0 7.8501 0.97561 7.8501 2.19512ZM7.8501 17.8049C7.8501 19.0244 8.80248 20 9.99295 20C11.1834 20 12.1358 19.0244 12.1358 17.8049C12.1358 16.5854 11.1834 15.6098 9.99295 15.6098C8.80248 15.6098 7.8501 16.5854 7.8501 17.8049Z" fill="#8B83BA" /> </svg>
-                                </label>
-                                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 border">
-                                  <li onClick={e => handleClick(e)}><a>Item 1</a></li>
-                                  <li onClick={e => handleClick(e)}><a>Item 2</a></li>
-                                </ul>
+                              <div className="cursor-pointer" >
+                                <FaEdit size={20} />
+                                <FaEye size={20} />
                               </div>
                             </td>
                           </tr>)) :

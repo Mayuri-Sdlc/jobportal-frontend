@@ -5,7 +5,7 @@ import { Sidebar, Header, Loader, Pagination, } from '../../components'
 import moment from 'moment/moment'
 import AddEventModal from '../../components/Modals/AddEventModal'
 import { apiGET } from '../../utils/apiHelper'
-import { FaEdit } from 'react-icons/fa'
+import { FaEdit, FaEye } from 'react-icons/fa'
 
 const EventList = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -135,8 +135,9 @@ useEffect(()=>{
                                                         </td>
                                                         <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{moment(item.datetime).format('ddd MMM DD YYYY')}</td>
                                                         <td className="flex gap-6 px-6 py-4 text-sm font-medium text-right whitespace-nowrap items-center">
-                                                            <div className="cursor-pointer">
-                                                                <FaEdit/>
+                                                            <div className="cursor-pointer flex gap-2">
+                                                                <FaEdit size={20}/>
+                                                                <FaEye size={20}/>
                                                             </div>
                                                         </td>
                                                     </tr>)) :

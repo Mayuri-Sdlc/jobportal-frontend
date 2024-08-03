@@ -13,12 +13,14 @@ import CompanyOnBoarding from '../pages/onboarding/CompanyOnBoarding';
 // import { UserList } from '../pages/users/UserList';
 import { UserProfile } from '../pages/users/userDetails';
 import AdminDashboard from '../pages/dashboard/AdminDashboard';
+import MyJobs from '../pages/myJobs/MyJobs';
 
 const publicPages = [
   { exact: true, path: "/login", element: Login },
   { exact: true, path: "/signup", element: SignUp },
   { exact: true, path: "/user-onboarding", element: UserOnBoarding },
   { exact: true, path: "/company-onboarding", element: CompanyOnBoarding },
+  { exact: true, path: "/myjobs", element: MyJobs },
 ];
 
 const adminPages = [

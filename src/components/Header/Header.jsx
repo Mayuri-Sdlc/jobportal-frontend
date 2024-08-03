@@ -2,11 +2,21 @@ import React, { useContext } from 'react';
 import { SidebarContext } from '../../context/SidebarContext';
 import { FaSearch, FaBell, FaCog } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../features/auth/authSlice';
 
 const Header = () => {
     const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
-
+    const history = useHistory()
+    const dispatch = useDispatch()
+const handleLogout=()=>{
+    // Implement logout logic here
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    dispatch(logout())
+    history.push("/login")
+}
     return (
         <header className="top-0 z-30 px-2 sm:px-4 bg-white border-b border-gray-200 min-w-full">
             <div className={`flex flex-wrap items-center ${isSidebarOpen ? 'justify-center md:justify-between' : 'justify-between'} mx-auto`}>
@@ -30,9 +40,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className='flex flex-wrap justify-between gap-2'>
-                    <Link to={"/login"}>
-                        <button className='border  p-2 rounded-md'>Logout</button>
-                    </Link>
+                        <button onClick={()=>handleLogout()} className='border  p-2 rounded-md'>Logout</button>
                 </div>
             </div>
         </header>

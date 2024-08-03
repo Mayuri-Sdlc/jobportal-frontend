@@ -15,8 +15,6 @@ const publicPages = [
 const adminPages = [
   { exact: true, path: "/", element: Home },
   // { exact: true, path: "/users", element: UserList },
-  // { exact: true, path: "/users/:type/:id", element: UserProfile },
-  // { exact: true, path: "/startups/user", element: UserProfile },
 ];
 
 const Routes = () => {

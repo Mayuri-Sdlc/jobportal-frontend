@@ -23,22 +23,7 @@ function Sidebar() {
             <div className='flex justify-center p-4 bg-primary'>
               {
                 isSidebarOpen ?
-                  <svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 38.9768C0 34.7298 2.6 30.8798 7.56 30.8798C10.68 30.8798 13.08 32.3483 14.2 35.4045L11.08 36.635C10.52 35.0473 9.44 33.936 7.52 33.936C4.72 33.936 3.52 36.4365 3.52 38.9768C3.52 41.517 4.72 44.0175 7.52 44.0175C9.4 44.0175 10.52 42.9062 11.08 41.3185L14.2 42.549C13.08 45.6052 10.68 47.0737 7.56 47.0737C2.6 47.1134 0 43.2634 0 38.9768Z" fill="white" />
-                    <path d="M16.5595 31.1973H20.1195V33.42C21.0795 31.9117 22.7195 30.9988 24.5195 30.9194C25.5195 30.9194 26.5195 31.1973 27.3595 31.7529L25.6395 34.9282C25.0395 34.6107 24.3595 34.4519 23.6795 34.4123C22.1595 34.3726 20.8395 35.3648 20.3995 36.7937C20.1995 37.4288 20.0795 38.1432 20.0795 39.9293V46.8356H16.5195V31.1973H16.5595Z" fill="white" />
-                    <path d="M27.5596 38.9768C27.5596 34.2535 30.8396 30.8798 35.4396 30.8798C39.9596 30.8798 43.2396 34.2535 43.2396 38.9768C43.2396 43.7 39.9196 47.1134 35.4396 47.1134C30.9596 47.1134 27.5596 43.7 27.5596 38.9768ZM35.3996 44.0175C38.0396 44.0175 39.6396 42.1124 39.6396 38.9768C39.6396 35.8412 38.0396 33.9757 35.3996 33.9757C32.7596 33.9757 31.0796 35.8808 31.0796 38.9768C31.0796 42.0727 32.7596 44.0175 35.3996 44.0175Z" fill="white" />
-                    <path d="M44.2402 31.1973H48.0002L50.8402 41.4376L54.0002 31.1973H57.0802L60.2402 41.3979L63.0802 31.1973H66.8802L62.0402 46.8356H58.8402L55.5202 36.1984L52.2402 46.8356H49.0002L44.2402 31.1973Z" fill="white" />
-                    <path d="M68 38.9767C68 33.9359 71.08 30.8797 74.84 30.8797C76.72 30.8003 78.52 31.7529 79.56 33.3405V24.7275H83.08V46.8355H79.56V44.7319C78.48 46.4783 76.76 47.153 74.84 47.153C70.68 47.1134 68 43.6205 68 38.9767ZM75.72 43.8587C78.2 43.8587 79.88 41.9138 79.88 38.9767C79.88 36.0395 78.2 34.0947 75.72 34.0947C73.24 34.0947 71.56 36.0395 71.56 38.9767C71.56 41.9138 73.24 43.8587 75.72 43.8587Z" fill="white" />
-                    <path d="M86.2402 24.7275H90.1602V28.657H86.2402V24.7275ZM86.4002 31.1972H89.9202V46.8355H86.4002V31.1972Z" fill="white" />
-                    <path d="M93.2803 31.1973H96.8403V33.2215C97.8803 31.5942 99.6803 30.9194 101.56 30.9194C105.08 30.9194 107.2 32.9834 107.2 36.7143V46.8356H103.6V38.0241C103.6 35.2458 102.6 33.9757 100.48 33.9757C98.1203 33.9757 96.8403 35.603 96.8403 39.2546V46.8356H93.2803V31.1973Z" fill="white" />
-                    <path d="M108.36 31.1973H112.24L116.24 42.2711L120.28 31.1973H124.12L117.72 46.8356H114.8L108.36 31.1973Z" fill="white" />
-                    <path d="M124.8 39.0958C124.8 34.9283 127.08 30.8798 132.2 30.8798C137.08 30.8798 139.4 34.4917 139.4 38.6989C139.4 39.0164 139.36 39.6118 139.32 40.1675H128.4C128.56 42.4696 129.96 43.9381 132.52 43.9381C134.04 43.9778 135.48 43.3428 136.44 42.2314L138.88 44.3748C137.28 46.2005 134.92 47.2325 132.44 47.1531C127.16 47.1134 124.8 43.3031 124.8 39.0958ZM136 37.5479V37.3891C136 35.5236 134.6 33.8169 132.24 33.8169C129.72 33.8169 128.48 35.603 128.28 37.5082L136 37.5479Z" fill="white" />
-                    <path d="M140.72 43.819L143.16 41.7153C144 43.2633 145.64 44.2159 147.44 44.2159C149.16 44.2159 150.2 43.4618 150.2 42.3504C150.2 40.9612 148.64 40.5643 146.8 40.0483C144.24 39.3736 141.52 38.4607 141.52 35.4044C141.52 32.6261 143.84 30.84 147.28 30.84C149.8 30.84 151.88 31.8719 153.08 33.7374L150.68 35.4044C149.92 34.2137 148.6 33.539 147.16 33.539C145.84 33.539 144.8 34.0946 144.8 35.0869C144.8 36.0792 145.68 36.4364 147.8 36.9127C150.36 37.5478 153.68 38.3416 153.68 41.9138C153.68 45.0097 151.16 47.034 147.4 47.034C144.76 47.1927 142.28 45.9623 140.72 43.819Z" fill="white" />
-                    <path d="M157.92 42.4299V33.936H154.92V31.1973H157.92V27.3869L161.52 25.6405V31.1973H165.04V33.936H161.52V41.4773C161.52 43.3031 161.96 44.2557 163.36 44.2557C163.92 44.216 164.48 44.1366 165.04 43.9778V46.6768C164.2 46.9943 163.32 47.1134 162.44 47.1134C159.96 47.1134 157.92 45.8433 157.92 42.4299Z" fill="white" />
-                    <path d="M200 15.3605H185.56C184.44 15.2811 183.56 14.3285 183.64 13.2172C183.64 12.9393 183.72 12.6615 183.84 12.4233L184.16 11.8677L191.08 0L193.08 1.15104L186.12 13.0584H200V15.3605Z" fill="#00DDE2" />
-                    <path d="M165 15.3605V13.0584H178.88L171.96 1.15104L173.96 0L181.16 12.3836C181.68 13.3759 181.24 14.6063 180.24 15.1223C180 15.2414 179.72 15.3208 179.44 15.3208L165 15.3605Z" fill="#00DDE2" />
-                    <path d="M189.44 31.1972L182.48 19.2898L175.56 31.1972L173.56 30.0462L180.8 17.6625C181.44 16.7099 182.68 16.4718 183.64 17.0671C183.88 17.2259 184.08 17.4244 184.24 17.6625L184.56 18.2182L191.44 30.0858L189.44 31.1972Z" fill="#00DDE2" />
-                  </svg> : null
+                  <h1 className='text-white text-xl'>Job Portal</h1> : null
               }
             </div>
             {/* Pages group */}
@@ -91,22 +76,22 @@ function Sidebar() {
                       </div>
                       {
                         isSidebarOpen ?
-                        <div className='w-full'>
+                          <div className='w-full'>
                             <span onClick={() => settoggleUser(!toggleUser)} className={`w-full flex justify-between text-base font-semibold font-inter  ${pathname.includes('users') ? 'opacity-100 text-[#F5F6F7]' : 'opacity-50'} duration-200`}>
                               <div>Users</div>
                               {toggleUser
                                 ? <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"> <path d="M7.41,15.42L12,10.83L16.59,15.42L18,14L12,8L6,14L7.41,15.42Z" /> </svg>
                                 : <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>}
-                            </span> 
-                          {toggleUser && 
-                          <>
-                            <div className='mt-5'><Link to="/users/investors">Investors</Link></div>
-                            <div className='my-2'><Link to="/users/founders">Founders</Link></div>
-                            <div><Link to="/users/system-users">System Users</Link></div>
-                            <div className='my-2'><Link to="/users">All</Link></div>
-                          </>
-                          }
-                        </div>
+                            </span>
+                            {toggleUser &&
+                              <>
+                                <div className='mt-5'><Link to="/users/investors">Investors</Link></div>
+                                <div className='my-2'><Link to="/users/founders">Founders</Link></div>
+                                <div><Link to="/users/system-users">System Users</Link></div>
+                                <div className='my-2'><Link to="/users">All</Link></div>
+                              </>
+                            }
+                          </div>
                           : null
                       }
                     </div>
@@ -161,24 +146,24 @@ function Sidebar() {
                       </div>
                       {
                         isSidebarOpen ?
-                        <div className='w-full'>
+                          <div className='w-full'>
                             <span onClick={() => settoggleCampaign(!toggleCampaign)} className={`w-full flex justify-between text-base font-semibold font-inter  ${pathname.includes('campaign') ? 'opacity-100 text-[#F5F6F7]' : 'opacity-50'} duration-200`}>
                               <div>Campaigns</div>
                               {toggleCampaign
                                 ? <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"> <path d="M7.41,15.42L12,10.83L16.59,15.42L18,14L12,8L6,14L7.41,15.42Z" /> </svg>
-                                : <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg> }
-                            </span> 
-                          {toggleCampaign && 
-                          <>
-                            <div className='mt-5'><Link to="/campaigns/pending">Pending</Link></div>
-                            <div className='my-2'><Link to="/campaigns/closed">Closed</Link></div>
-                            <div><Link to="/campaigns/dealroom">Deal Room</Link></div>
-                            <div className='my-2'><Link to="/campaigns/live">Live</Link></div>
-                            <div className='my-2'><Link to="/campaigns/failed">Failed</Link></div>
-                            <div className='my-2'><Link to="/campaigns">All</Link></div>
-                          </>
-                          }
-                        </div>
+                                : <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>}
+                            </span>
+                            {toggleCampaign &&
+                              <>
+                                <div className='mt-5'><Link to="/campaigns/pending">Pending</Link></div>
+                                <div className='my-2'><Link to="/campaigns/closed">Closed</Link></div>
+                                <div><Link to="/campaigns/dealroom">Deal Room</Link></div>
+                                <div className='my-2'><Link to="/campaigns/live">Live</Link></div>
+                                <div className='my-2'><Link to="/campaigns/failed">Failed</Link></div>
+                                <div className='my-2'><Link to="/campaigns">All</Link></div>
+                              </>
+                            }
+                          </div>
                           : null
                       }
                     </div>
@@ -232,22 +217,22 @@ function Sidebar() {
                       </div>
                       {
                         isSidebarOpen ?
-                        <div className='w-full'>
+                          <div className='w-full'>
                             <span onClick={() => settoggleStartup(!toggleStartup)} className={`w-full flex justify-between text-base font-semibold font-inter  ${pathname.includes('startup') ? 'opacity-100 text-[#F5F6F7]' : 'opacity-50'} duration-200`}>
                               <div>Startup</div>
                               {toggleCampaign
                                 ? <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"> <path d="M7.41,15.42L12,10.83L16.59,15.42L18,14L12,8L6,14L7.41,15.42Z" /> </svg>
-                                : <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg> }
-                            </span> 
-                          {toggleStartup && 
-                          <>
-                            <div className='mt-5'><Link to="/startups/approved">Approved</Link></div>
-                            <div className='my-2'><Link to="/startups/pending">Pending</Link></div>
-                            <div><Link to="/startups/declined">Declined</Link></div>
-                            <div className='my-2'><Link to="/startups">All</Link></div>
-                          </>
-                          }
-                        </div>
+                                : <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>}
+                            </span>
+                            {toggleStartup &&
+                              <>
+                                <div className='mt-5'><Link to="/startups/approved">Approved</Link></div>
+                                <div className='my-2'><Link to="/startups/pending">Pending</Link></div>
+                                <div><Link to="/startups/declined">Declined</Link></div>
+                                <div className='my-2'><Link to="/startups">All</Link></div>
+                              </>
+                            }
+                          </div>
                           : null
                       }
                     </div>

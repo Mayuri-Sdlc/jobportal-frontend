@@ -28,8 +28,8 @@ const adminPages = [
   { exact: true, path: "/admin/dashboard", element: UserList },
   { exact: true, path: "/admin/users", element: UserList },
   { exact: true, path: "/admin/all-companies", element: CompanyList },
-  { exact: true, path: "/admin/events", element: EventList },
-  { exact: true, path: "/admin/job-posts", element: JobPostList },
+  { exact: true, path: "/admin/events/:id", element: EventList },
+  { exact: true, path: "/admin/job-posts/:id", element: JobPostList },
 ];
 
 const Routes = () => {

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import { Sidebar, Header, Loader, Pagination } from '../../components'
 
 import moment from 'moment/moment'
 import AddJobPostModal from '../../components/Modals/AddJobPostModal'
 import { FaEdit, FaEye } from 'react-icons/fa'
+import { apiPOST } from '../../utils/apiHelper'
 
 const JobPostList = () => {
+    const param = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [allJobPosts,setAllJobPosts] = useState([])
     console.log("UUU",allJobPosts)
@@ -18,7 +20,10 @@ const JobPostList = () => {
 
    
 const getAllJobPosts = async()=>{
-const response = await apiGET(`/jobposts/getall`)
+    const payload = {
+        companyId:param?.id
+    }
+const response = await apiPOST(`/jobpost/getbycompany`,payload)
 if(response.data.status === 200){
     setAllJobPosts(response.data.data)
 }
@@ -112,8 +117,8 @@ useEffect(()=>{
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y border-secondary-light">
-                                            {jobposts && jobposts.results && jobposts.results.length ?
-                                                jobposts.results.map((item) => (
+                                            {allJobPosts && allJobPosts && allJobPosts.length ?
+                                                allJobPosts.map((item) => (
                                                     <tr key={item.id}>
                                                         <td className="py-3 pl-4">
                                                             <div className="flex items-center h-5">
@@ -128,18 +133,17 @@ useEffect(()=>{
                                                         </td>
                                                         <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">
                                                             <div className='flex gap-3 items-center'>
-                                                                <img className='rounded-3xl w-10 h-10' src={item?.profilePic ? item.profilePic : 'https://img.freepik.com/premium-vector/user-customer-avatar-vector-illustration_276184-160.jpg?w=50'} alt="" />
+                                                                {/* <img className='rounded-3xl w-10 h-10' src={item?.profilePic ? item.profilePic : 'https://img.freepik.com/premium-vector/user-customer-avatar-vector-illustration_276184-160.jpg?w=50'} alt="" /> */}
                                                                 <div>
-                                                                    <h1 className='font-normal text-lg text-[#091E42] mr-2 whitespace-nowrap'><Link to={`/jobposts/${item.role.mainRole}/${item.id}`}>{item.firstName} {item.lastName}</Link></h1>
-                                                                    {item.role.type == 'institutional' || item.role.mainRole == 'founder' ? <p className='text-sm font-normal text-[#6B788E]'>{item.companies.map(cItem => cItem.name).join(',')}</p> : null}
+                                                                    <h1 className='font-normal text-lg text-[#091E42] mr-2 whitespace-nowrap'><Link to={`/jobposts/`}>{item.name} </Link></h1>
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.email}</td>
-                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.role.mainRole}</td>
-                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{moment(item.createdDate).format('ddd MMM DD YYYY')} <br /><small>{moment(item.createdDate).format('HH:mm:ss Z')}</small></td>
+                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.desc?item.desc:"--"}</td>
+                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.skills}</td>
+                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{moment(item?.event?.datetime).format('ddd MMM DD YYYY')} <br /><small>{moment(item.createdDate).format('HH:mm:ss Z')}</small></td>
                                                         <td className="flex gap-6 px-6 py-4 text-sm font-medium text-right whitespace-nowrap items-center">
-                                                            <div className="cursor-pointer" >
+                                                            <div className="cursor-pointer flex gap-2" >
                                                             <FaEdit size={20}/>
                                                             <FaEye size={20}/>
                                                             </div>

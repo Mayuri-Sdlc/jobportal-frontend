@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import { Sidebar, Header, Loader, Pagination, } from '../../components'
 
 import moment from 'moment/moment'
 import AddEventModal from '../../components/Modals/AddEventModal'
-import { apiGET } from '../../utils/apiHelper'
+import { apiGET, apiPOST } from '../../utils/apiHelper'
 import { FaEdit, FaEye } from 'react-icons/fa'
 
 const EventList = () => {
+    const param = useParams()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [allEvents,setAllEvents] = useState([])
   console.log("UUU",allEvents)
@@ -18,7 +19,10 @@ const EventList = () => {
         id: 1
     }]
 const getAllEvents = async()=>{
-const response = await apiGET(`/events/getall`)
+    const payload = {
+        companyId:param?.id
+    }
+const response = await apiPOST(`/events/getall`,payload)
 if(response.data.status === 200){
     setAllEvents(response.data.data)
 }
@@ -137,7 +141,7 @@ useEffect(()=>{
                                                         <td className="flex gap-6 px-6 py-4 text-sm font-medium text-right whitespace-nowrap items-center">
                                                             <div className="cursor-pointer flex gap-2">
                                                                 <FaEdit size={20}/>
-                                                                <FaEye size={20}/>
+                                                               <Link to={`/admin/job-posts/${item?.companyId}`}><FaEye size={20}/></Link> 
                                                             </div>
                                                         </td>
                                                     </tr>)) :

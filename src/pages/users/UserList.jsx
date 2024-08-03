@@ -1,11 +1,8 @@
 import { Link, useHistory } from 'react-router-dom'
 import { Sidebar, Header, Loader, Pagination } from '../../components'
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getAllUsers } from '../../features/user/userSlice'
 import moment from 'moment/moment'
-import BlockUserModal from '../../components/Modals/BlockUserModal'
 import { apiGET, apiPOST } from '../../utils/apiHelper'
 import { FaEdit, FaEye } from 'react-icons/fa'
 
@@ -14,10 +11,12 @@ const UserList = () => {
     id: 1
 }]
 const [allUsers,setAllUsers] = useState([])
-
+console.log("All users",allUsers)
 const getAllUsers = async()=>{
-const response = await apiPOST(`/users`)
-console.log("Users",response)
+const response = await apiPOST(`/users/getall`)
+if(response?.data?.status==200){
+  setAllUsers(response?.data?.data)
+}
 }
 
 useEffect(()=>{
@@ -102,14 +101,13 @@ useEffect(()=>{
                           </span>
                         </th>
                         <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Email Address</th>
-                        <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">User Type</th>
-                        <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Registered Date</th>
+                        <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Country</th>
                         <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Action</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y border-secondary-light">
-                      {users && users.results && users.results.length ?
-                        users.results.map((item) => (
+                      {allUsers && allUsers && allUsers.length ?
+                        allUsers.map((item) => (
                           <tr key={item.id}>
                             <td className="py-3 pl-4">
                               <div className="flex items-center h-5">
@@ -126,16 +124,15 @@ useEffect(()=>{
                               <div className='flex gap-3 items-center'>
                                 <img className='rounded-3xl w-10 h-10' src={item?.profilePic ? item.profilePic : 'https://img.freepik.com/premium-vector/user-customer-avatar-vector-illustration_276184-160.jpg?w=50'} alt="" />
                                 <div>
-                                  <h1 className='font-normal text-lg text-[#091E42] mr-2 whitespace-nowrap'><Link to={`/users/${item.role.mainRole}/${item.id}`}>{item.firstName} {item.lastName}</Link></h1>
-                                  {item.role.type == 'institutional' || item.role.mainRole == 'founder' ? <p className='text-sm font-normal text-[#6B788E]'>{item.companies.map(cItem => cItem.name).join(',')}</p> : null}
+                                  <h1 className='font-normal text-lg text-[#091E42] mr-2 whitespace-nowrap'><Link to={`/users/`}>{item.firstName} {item.lastName}</Link></h1>
                                 </div>
                               </div>
                             </td>
                             <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.email}</td>
-                            <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.role.mainRole}</td>
+                            <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.country}</td>
                             <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{moment(item.createdDate).format('ddd MMM DD YYYY')} <br /><small>{moment(item.createdDate).format('HH:mm:ss Z')}</small></td>
                             <td className="flex gap-6 px-6 py-4 text-sm font-medium text-right whitespace-nowrap items-center">
-                              <div className="cursor-pointer" >
+                              <div className="cursor-pointer flex gap-2" >
                                 <FaEdit size={20} />
                                 <FaEye size={20} />
                               </div>

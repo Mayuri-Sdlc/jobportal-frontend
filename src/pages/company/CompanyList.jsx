@@ -7,11 +7,24 @@ import { getAllUsers } from '../../features/user/userSlice'
 import moment from 'moment/moment'
 import BlockUserModal from '../../components/Modals/BlockUserModal'
 import { FaEdit, FaEye } from 'react-icons/fa'
+import { apiPOST } from '../../utils/apiHelper'
 
 const CompanyList = () => {
     const users = [{
         id: 1
     }]
+    const [companies,setAllCompanies] = useState([])
+console.log("All Compsnies",companies)
+const getAllCompanies = async()=>{
+const response = await apiPOST(`/company/getall`)
+if(response?.data?.status==200){
+  setAllCompanies(response?.data?.data)
+}
+}
+
+useEffect(()=>{
+  getAllCompanies()
+},[])
     return (
         <div className='flex h-screen overflow-hidden'>
             <Sidebar />
@@ -89,15 +102,16 @@ const CompanyList = () => {
                                                         <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} > <path strokeLinecap="round" strokeLinejoin="round" d="M17 13l-5 5m0 0l-5-5m5 5V6" /> </svg>
                                                     </span>
                                                 </th>
-                                                <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Email Address</th>
-                                                <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Company Type</th>
+                                                <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Address</th>
+                                                <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Website</th>
+                                                <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Contact No</th>
                                                 <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Registered Date</th>
                                                 <th scope="col" className="px-6 py-3 text-lg font-bold text-left text-secondary capitalize">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y border-secondary-light">
-                                            {users && users.results && users.results.length ?
-                                                users.results.map((item) => (
+                                            {companies && companies && companies.length ?
+                                                companies.map((item) => (
                                                     <tr key={item.id}>
                                                         <td className="py-3 pl-4">
                                                             <div className="flex items-center h-5">
@@ -112,20 +126,20 @@ const CompanyList = () => {
                                                         </td>
                                                         <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">
                                                             <div className='flex gap-3 items-center'>
-                                                                <img className='rounded-3xl w-10 h-10' src={item?.profilePic ? item.profilePic : 'https://img.freepik.com/premium-vector/user-customer-avatar-vector-illustration_276184-160.jpg?w=50'} alt="" />
+                                                                {/* <img className='rounded-3xl w-10 h-10' src={item?.profilePic ? item.profilePic : 'https://img.freepik.com/premium-vector/user-customer-avatar-vector-illustration_276184-160.jpg?w=50'} alt="" /> */}
                                                                 <div>
-                                                                    <h1 className='font-normal text-lg text-[#091E42] mr-2 whitespace-nowrap'><Link to={`/users/${item.role.mainRole}/${item.id}`}>{item.firstName} {item.lastName}</Link></h1>
-                                                                    {item.role.type == 'institutional' || item.role.mainRole == 'founder' ? <p className='text-sm font-normal text-[#6B788E]'>{item.companies.map(cItem => cItem.name).join(',')}</p> : null}
+                                                                    <h1 className='font-normal text-lg text-[#091E42] mr-2 whitespace-nowrap'><Link to={`/users/`}>{item.name} </Link></h1>
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.email}</td>
-                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.role.mainRole}</td>
-                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{moment(item.createdDate).format('ddd MMM DD YYYY')} <br /><small>{moment(item.createdDate).format('HH:mm:ss Z')}</small></td>
+                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.address}</td>
+                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.website}</td>
+                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{item.contactno}</td>
+                                                        <td className="px-6 py-4 text-lg font-normal text-secondary whitespace-nowrap capitalize text-left">{moment(item.lastUpdatedDate).format('ddd MMM DD YYYY')} <br /><small>{moment(item.createdDate).format('HH:mm:ss Z')}</small></td>
                                                         <td className="flex gap-6 px-6 py-4 text-sm font-medium text-right whitespace-nowrap items-center">
-                                                        <div className="cursor-pointer" >
+                                                        <div className="cursor-pointer flex gap-2" >
                                                             <FaEdit size={20}/>
-                                                            <FaEye size={20}/>
+                                                             <Link to={`/admin/events/${item.id}`}><FaEye size={20}/></Link>
                                                             </div>
                                                         </td>
                                                     </tr>)) :

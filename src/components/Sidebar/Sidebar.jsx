@@ -137,7 +137,7 @@ function Sidebar() {
                 </React.Fragment>
               </li>
 
-              <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
+              {/* <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
                 <React.Fragment>
                   <div
                     className={`block text-sidebar-profile truncate cursor-pointer transition duration-150 ${pathname.includes('events') ? 'opacity-100' : 'opacity-50'
@@ -175,8 +175,8 @@ function Sidebar() {
                     </div>
                   </div>
                 </React.Fragment>
-              </li>
-              <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
+              </li> */}
+              {/* <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
                 <React.Fragment>
                   <div
                     className={`block text-sidebar-profile truncate cursor-pointer transition duration-150 ${pathname.includes('events') ? 'opacity-100' : 'opacity-50'
@@ -214,7 +214,7 @@ function Sidebar() {
                     </div>
                   </div>
                 </React.Fragment>
-              </li>
+              </li> */}
               <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
                 <React.Fragment>
                   <Link

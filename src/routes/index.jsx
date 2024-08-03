@@ -3,9 +3,11 @@ import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 import AuthMiddleware from '../middleware/AuthMiddleware';
 import SignUp from '../pages/signup/SignUp';
 import Login from '../pages/login/Login';
-import { UserProfile } from '../pages/users/userDetails';
 import Home from '../pages/home/Home';
-// import { UserList } from '../pages/users/UserList';
+import UserList  from '../pages/users/UserList';
+import CompanyList from '../pages/company/CompanyList';
+import EventList from '../pages/Events/EventsList';
+import JobPostList from '../pages/jobpost/JobPostList';
 
 const publicPages = [
   { exact: true, path: "/login", element: Login },
@@ -14,7 +16,10 @@ const publicPages = [
 
 const adminPages = [
   { exact: true, path: "/", element: Home },
-  // { exact: true, path: "/users", element: UserList },
+  { exact: true, path: "/users", element: UserList },
+  { exact: true, path: "/all-companies", element: CompanyList },
+  { exact: true, path: "/events", element: EventList },
+  { exact: true, path: "/job-posts", element: JobPostList },
 ];
 
 const Routes = () => {

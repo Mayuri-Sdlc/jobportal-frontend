@@ -10,8 +10,9 @@ function Sidebar() {
   const { pathname } = location;
   const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
   const [toggleUser, settoggleUser] = useState(false)
-  const [toggleCampaign, settoggleCampaign] = useState(false)
-  const [toggleStartup, settoggleStartup] = useState(false)
+  const [toggleCompany, settoggleCompany] = useState(false)
+  const [toggleEvents, settoggleEvents] = useState(false)
+  const [toggleJobPost, settoggleJobPost] = useState(false)
 
   return (
     <div className="flex flex-col shadow-sm">
@@ -85,7 +86,7 @@ function Sidebar() {
                             </span>
                             {toggleUser &&
                               <>
-                                <div className='mt-5'><Link to="/users/investors">All Users</Link></div>
+                                <div className='mt-5'><Link to="/users">All Users</Link></div>
                               </>
                             }
                           </div>
@@ -95,43 +96,16 @@ function Sidebar() {
                   </div>
                 </React.Fragment>
               </li>
-              {/* <li className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0`}>
-                <React.Fragment>
-                  <Link
-                    to="/investors"
-                    className={`block text-sidebar-profile truncate transition duration-150 ${pathname.includes('investors') ? 'opacity-100' : 'opacity-50'
-                      }`}
-                  >
-                    <div className="flex items-center justify-start gap-4">
-                      <div className="flex items-center w-[25px]">
-                        {pathname.includes('investors')
-                          ? <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8.75 0C7.42392 0 6.15215 0.520587 5.21447 1.44724C4.27678 2.37389 3.75 3.63069 3.75 4.94118C3.75 6.25166 4.27678 7.50847 5.21447 8.43512C6.15215 9.36177 7.42392 9.88235 8.75 9.88235C10.0761 9.88235 11.3479 9.36177 12.2855 8.43512C13.2232 7.50847 13.75 6.25166 13.75 4.94118C13.75 3.63069 13.2232 2.37389 12.2855 1.44724C11.3479 0.520587 10.0761 0 8.75 0ZM2.51125 11.1176C2.18205 11.1163 1.85582 11.1793 1.55128 11.3028C1.24674 11.4264 0.96988 11.6082 0.736574 11.8377C0.503268 12.0672 0.318106 12.34 0.191708 12.6404C0.0653099 12.9408 0.00016189 13.2629 0 13.5882C0 15.6771 1.04125 17.2521 2.66875 18.2786C3.97875 19.1038 5.6625 19.5732 7.5 19.7153V14.8235C7.5 14.1683 7.76339 13.5399 8.23223 13.0766C8.70107 12.6132 9.33696 12.3529 10 12.3529H17.165C16.9456 11.9774 16.63 11.6655 16.25 11.4487C15.8699 11.2318 15.4388 11.1177 15 11.1176H2.51125ZM20 15.4412V19.1471C20 19.6385 19.8025 20.1098 19.4508 20.4573C19.0992 20.8048 18.6223 21 18.125 21H10.625C10.1277 21 9.65081 20.8048 9.29917 20.4573C8.94754 20.1098 8.75 19.6385 8.75 19.1471V15.4412C8.75 14.9497 8.94754 14.4784 9.29917 14.1309C9.65081 13.7835 10.1277 13.5882 10.625 13.5882H18.125C18.6223 13.5882 19.0992 13.7835 19.4508 14.1309C19.8025 14.4784 20 14.9497 20 15.4412ZM18.75 19.1471V17.9118C18.2527 17.9118 17.7758 18.107 17.4242 18.4545C17.0725 18.802 16.875 19.2733 16.875 19.7647H18.125C18.125 19.6009 18.1908 19.4438 18.3081 19.328C18.4253 19.2121 18.5842 19.1471 18.75 19.1471ZM18.75 15.4412C18.5842 15.4412 18.4253 15.3761 18.3081 15.2603C18.1908 15.1444 18.125 14.9873 18.125 14.8235H16.875C16.875 15.315 17.0725 15.7863 17.4242 16.1338C17.7758 16.4813 18.2527 16.6765 18.75 16.6765V15.4412ZM10.625 14.8235C10.625 14.9873 10.5592 15.1444 10.4419 15.2603C10.3247 15.3761 10.1658 15.4412 10 15.4412V16.6765C10.4973 16.6765 10.9742 16.4813 11.3258 16.1338C11.6775 15.7863 11.875 15.315 11.875 14.8235H10.625ZM10 19.1471C10.1658 19.1471 10.3247 19.2121 10.4419 19.328C10.5592 19.4438 10.625 19.6009 10.625 19.7647H11.875C11.875 19.2733 11.6775 18.802 11.3258 18.4545C10.9742 18.107 10.4973 17.9118 10 17.9118V19.1471ZM14.375 15.4412C13.8777 15.4412 13.4008 15.6364 13.0492 15.9839C12.6975 16.3314 12.5 16.8027 12.5 17.2941C12.5 17.7855 12.6975 18.2568 13.0492 18.6043C13.4008 18.9518 13.8777 19.1471 14.375 19.1471C14.8723 19.1471 15.3492 18.9518 15.7008 18.6043C16.0525 18.2568 16.25 17.7855 16.25 17.2941C16.25 16.8027 16.0525 16.3314 15.7008 15.9839C15.3492 15.6364 14.8723 15.4412 14.375 15.4412Z" fill="white" />
-                          </svg> :
-                          <svg width="19" height="20" viewBox="0 0 19 20" fill="none" fillOpacity={0.5} xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8.75 0C7.42392 0 6.15215 0.520587 5.21447 1.44724C4.27678 2.37389 3.75 3.63069 3.75 4.94118C3.75 6.25166 4.27678 7.50847 5.21447 8.43512C6.15215 9.36177 7.42392 9.88235 8.75 9.88235C10.0761 9.88235 11.3479 9.36177 12.2855 8.43512C13.2232 7.50847 13.75 6.25166 13.75 4.94118C13.75 3.63069 13.2232 2.37389 12.2855 1.44724C11.3479 0.520587 10.0761 0 8.75 0ZM2.51125 11.1176C2.18205 11.1163 1.85582 11.1793 1.55128 11.3028C1.24674 11.4264 0.96988 11.6082 0.736574 11.8377C0.503268 12.0672 0.318106 12.34 0.191708 12.6404C0.0653099 12.9408 0.00016189 13.2629 0 13.5882C0 15.6771 1.04125 17.2521 2.66875 18.2786C3.97875 19.1038 5.6625 19.5732 7.5 19.7153V14.8235C7.5 14.1683 7.76339 13.5399 8.23223 13.0766C8.70107 12.6132 9.33696 12.3529 10 12.3529H17.165C16.9456 11.9774 16.63 11.6655 16.25 11.4487C15.8699 11.2318 15.4388 11.1177 15 11.1176H2.51125ZM20 15.4412V19.1471C20 19.6385 19.8025 20.1098 19.4508 20.4573C19.0992 20.8048 18.6223 21 18.125 21H10.625C10.1277 21 9.65081 20.8048 9.29917 20.4573C8.94754 20.1098 8.75 19.6385 8.75 19.1471V15.4412C8.75 14.9497 8.94754 14.4784 9.29917 14.1309C9.65081 13.7835 10.1277 13.5882 10.625 13.5882H18.125C18.6223 13.5882 19.0992 13.7835 19.4508 14.1309C19.8025 14.4784 20 14.9497 20 15.4412ZM18.75 19.1471V17.9118C18.2527 17.9118 17.7758 18.107 17.4242 18.4545C17.0725 18.802 16.875 19.2733 16.875 19.7647H18.125C18.125 19.6009 18.1908 19.4438 18.3081 19.328C18.4253 19.2121 18.5842 19.1471 18.75 19.1471ZM18.75 15.4412C18.5842 15.4412 18.4253 15.3761 18.3081 15.2603C18.1908 15.1444 18.125 14.9873 18.125 14.8235H16.875C16.875 15.315 17.0725 15.7863 17.4242 16.1338C17.7758 16.4813 18.2527 16.6765 18.75 16.6765V15.4412ZM10.625 14.8235C10.625 14.9873 10.5592 15.1444 10.4419 15.2603C10.3247 15.3761 10.1658 15.4412 10 15.4412V16.6765C10.4973 16.6765 10.9742 16.4813 11.3258 16.1338C11.6775 15.7863 11.875 15.315 11.875 14.8235H10.625ZM10 19.1471C10.1658 19.1471 10.3247 19.2121 10.4419 19.328C10.5592 19.4438 10.625 19.6009 10.625 19.7647H11.875C11.875 19.2733 11.6775 18.802 11.3258 18.4545C10.9742 18.107 10.4973 17.9118 10 17.9118V19.1471ZM14.375 15.4412C13.8777 15.4412 13.4008 15.6364 13.0492 15.9839C12.6975 16.3314 12.5 16.8027 12.5 17.2941C12.5 17.7855 12.6975 18.2568 13.0492 18.6043C13.4008 18.9518 13.8777 19.1471 14.375 19.1471C14.8723 19.1471 15.3492 18.9518 15.7008 18.6043C16.0525 18.2568 16.25 17.7855 16.25 17.2941C16.25 16.8027 16.0525 16.3314 15.7008 15.9839C15.3492 15.6364 14.8723 15.4412 14.375 15.4412Z" fill="white" />
-                          </svg>
-                        }
-                      </div>
-                      {
-                        isSidebarOpen ?
-                          <span className={`text-base font-semibold font-inter  ${pathname.includes('investors') ? 'opacity-100 text-[#F5F6F7]' : 'opacity-50'} duration-200`}>
-                            Investors
-                          </span> : null
-                      }
-                    </div>
-                  </Link>
-                </React.Fragment>
-              </li> */}
+              
               <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
                 <React.Fragment>
                   <div
-                    className={`block text-sidebar-profile truncate cursor-pointer transition duration-150 ${pathname.includes('startup') ? 'opacity-100' : 'opacity-50'
+                    className={`block text-sidebar-profile truncate cursor-pointer transition duration-150 ${pathname.includes('all-companies') ? 'opacity-100' : 'opacity-50'
                       }`}
                   >
                     <div className="flex items-start justify-start gap-4">
                       <div className="flex items-center w-[25px]">
-                        {pathname.includes('startup')
+                        {pathname.includes('all-companies')
                           ? <svg width="16" height="23" viewBox="0 0 16 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.498 19.005H11.502C10.8405 20.5874 9.58238 21.8455 8 22.507C6.41762 21.8455 5.15947 20.5874 4.498 19.005ZM14 13.81L16 16.078V18.005H0V16.078L2 13.81V8.00499C2 4.51999 4.504 1.55799 8 0.459991C11.496 1.55799 14 4.52099 14 8.00499V13.809V13.81ZM8 10.005C8.53043 10.005 9.03914 9.79428 9.41421 9.4192C9.78929 9.04413 10 8.53542 10 8.00499C10 7.47456 9.78929 6.96585 9.41421 6.59078C9.03914 6.2157 8.53043 6.00499 8 6.00499C7.46957 6.00499 6.96086 6.2157 6.58579 6.59078C6.21071 6.96585 6 7.47456 6 8.00499C6 8.53542 6.21071 9.04413 6.58579 9.4192C6.96086 9.79428 7.46957 10.005 8 10.005Z" fill="white" />
                           </svg> :
@@ -143,18 +117,95 @@ function Sidebar() {
                       {
                         isSidebarOpen ?
                           <div className='w-full'>
-                            <span onClick={() => settoggleStartup(!toggleStartup)} className={`w-full flex justify-between text-base font-semibold font-inter  ${pathname.includes('startup') ? 'opacity-100 text-[#F5F6F7]' : 'opacity-50'} duration-200`}>
+                            <span onClick={() => settoggleCompany(!toggleCompany)} className={`w-full flex justify-between text-base font-semibold font-inter  ${pathname.includes('all-companies') ? 'opacity-100 text-[#F5F6F7]' : 'opacity-50'} duration-200`}>
                               <div>Company</div>
-                              {toggleCampaign
+                              {toggleCompany
                                 ? <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"> <path d="M7.41,15.42L12,10.83L16.59,15.42L18,14L12,8L6,14L7.41,15.42Z" /> </svg>
                                 : <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>}
                             </span>
-                            {toggleStartup &&
+                            {toggleCompany &&
                               <>
-                                <div className='mt-5'><Link to="/startups/approved">Approved</Link></div>
-                                <div className='my-2'><Link to="/startups/pending">Pending</Link></div>
-                                <div><Link to="/startups/declined">Declined</Link></div>
-                                <div className='my-2'><Link to="/startups">All</Link></div>
+                                <div className='mt-5'><Link to="/all-companies">All Companies</Link></div>
+                          
+                              </>
+                            }
+                          </div>
+                          : null
+                      }
+                    </div>
+                  </div>
+                </React.Fragment>
+              </li>
+
+              <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
+                <React.Fragment>
+                  <div
+                    className={`block text-sidebar-profile truncate cursor-pointer transition duration-150 ${pathname.includes('events') ? 'opacity-100' : 'opacity-50'
+                      }`}
+                  >
+                    <div className="flex items-start justify-start gap-4">
+                      <div className="flex items-center w-[25px]">
+                        {pathname.includes('events')
+                          ? <svg width="16" height="23" viewBox="0 0 16 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.498 19.005H11.502C10.8405 20.5874 9.58238 21.8455 8 22.507C6.41762 21.8455 5.15947 20.5874 4.498 19.005ZM14 13.81L16 16.078V18.005H0V16.078L2 13.81V8.00499C2 4.51999 4.504 1.55799 8 0.459991C11.496 1.55799 14 4.52099 14 8.00499V13.809V13.81ZM8 10.005C8.53043 10.005 9.03914 9.79428 9.41421 9.4192C9.78929 9.04413 10 8.53542 10 8.00499C10 7.47456 9.78929 6.96585 9.41421 6.59078C9.03914 6.2157 8.53043 6.00499 8 6.00499C7.46957 6.00499 6.96086 6.2157 6.58579 6.59078C6.21071 6.96585 6 7.47456 6 8.00499C6 8.53542 6.21071 9.04413 6.58579 9.4192C6.96086 9.79428 7.46957 10.005 8 10.005Z" fill="white" />
+                          </svg> :
+                          <svg width="16" height="23" viewBox="0 0 16 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.498 19.005H11.502C10.8405 20.5874 9.58238 21.8455 8 22.507C6.41762 21.8455 5.15947 20.5874 4.498 19.005ZM14 13.81L16 16.078V18.005H0V16.078L2 13.81V8.00499C2 4.51999 4.504 1.55799 8 0.459991C11.496 1.55799 14 4.52099 14 8.00499V13.809V13.81ZM8 10.005C8.53043 10.005 9.03914 9.79428 9.41421 9.4192C9.78929 9.04413 10 8.53542 10 8.00499C10 7.47456 9.78929 6.96585 9.41421 6.59078C9.03914 6.2157 8.53043 6.00499 8 6.00499C7.46957 6.00499 6.96086 6.2157 6.58579 6.59078C6.21071 6.96585 6 7.47456 6 8.00499C6 8.53542 6.21071 9.04413 6.58579 9.4192C6.96086 9.79428 7.46957 10.005 8 10.005Z" fill="white" />
+                          </svg>
+                        }
+                      </div>
+                      {
+                        isSidebarOpen ?
+                          <div className='w-full'>
+                            <span onClick={() => settoggleEvents(!toggleEvents)} className={`w-full flex justify-between text-base font-semibold font-inter  ${pathname.includes('events') ? 'opacity-100 text-[#F5F6F7]' : 'opacity-50'} duration-200`}>
+                              <div>Events</div>
+                              {toggleEvents
+                                ? <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"> <path d="M7.41,15.42L12,10.83L16.59,15.42L18,14L12,8L6,14L7.41,15.42Z" /> </svg>
+                                : <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>}
+                            </span>
+                            {toggleEvents &&
+                              <>
+                                <div className='mt-5'><Link to="/events">All Events</Link></div>
+                          
+                              </>
+                            }
+                          </div>
+                          : null
+                      }
+                    </div>
+                  </div>
+                </React.Fragment>
+              </li>
+              <li className={`px-3 py-2 rounded-sm mb-3 last:mb-0`}>
+                <React.Fragment>
+                  <div
+                    className={`block text-sidebar-profile truncate cursor-pointer transition duration-150 ${pathname.includes('events') ? 'opacity-100' : 'opacity-50'
+                      }`}
+                  >
+                    <div className="flex items-start justify-start gap-4">
+                      <div className="flex items-center w-[25px]">
+                        {pathname.includes('events')
+                          ? <svg width="16" height="23" viewBox="0 0 16 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.498 19.005H11.502C10.8405 20.5874 9.58238 21.8455 8 22.507C6.41762 21.8455 5.15947 20.5874 4.498 19.005ZM14 13.81L16 16.078V18.005H0V16.078L2 13.81V8.00499C2 4.51999 4.504 1.55799 8 0.459991C11.496 1.55799 14 4.52099 14 8.00499V13.809V13.81ZM8 10.005C8.53043 10.005 9.03914 9.79428 9.41421 9.4192C9.78929 9.04413 10 8.53542 10 8.00499C10 7.47456 9.78929 6.96585 9.41421 6.59078C9.03914 6.2157 8.53043 6.00499 8 6.00499C7.46957 6.00499 6.96086 6.2157 6.58579 6.59078C6.21071 6.96585 6 7.47456 6 8.00499C6 8.53542 6.21071 9.04413 6.58579 9.4192C6.96086 9.79428 7.46957 10.005 8 10.005Z" fill="white" />
+                          </svg> :
+                          <svg width="16" height="23" viewBox="0 0 16 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.498 19.005H11.502C10.8405 20.5874 9.58238 21.8455 8 22.507C6.41762 21.8455 5.15947 20.5874 4.498 19.005ZM14 13.81L16 16.078V18.005H0V16.078L2 13.81V8.00499C2 4.51999 4.504 1.55799 8 0.459991C11.496 1.55799 14 4.52099 14 8.00499V13.809V13.81ZM8 10.005C8.53043 10.005 9.03914 9.79428 9.41421 9.4192C9.78929 9.04413 10 8.53542 10 8.00499C10 7.47456 9.78929 6.96585 9.41421 6.59078C9.03914 6.2157 8.53043 6.00499 8 6.00499C7.46957 6.00499 6.96086 6.2157 6.58579 6.59078C6.21071 6.96585 6 7.47456 6 8.00499C6 8.53542 6.21071 9.04413 6.58579 9.4192C6.96086 9.79428 7.46957 10.005 8 10.005Z" fill="white" />
+                          </svg>
+                        }
+                      </div>
+                      {
+                        isSidebarOpen ?
+                          <div className='w-full'>
+                            <span onClick={() => settoggleJobPost(!toggleJobPost)} className={`w-full flex justify-between text-base font-semibold font-inter  ${pathname.includes('job-posts') ? 'opacity-100 text-[#F5F6F7]' : 'opacity-50'} duration-200`}>
+                              <div>Job Posts</div>
+                              {toggleJobPost
+                                ? <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"> <path d="M7.41,15.42L12,10.83L16.59,15.42L18,14L12,8L6,14L7.41,15.42Z" /> </svg>
+                                : <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>}
+                            </span>
+                            {toggleJobPost &&
+                              <>
+                                <div className='mt-5'><Link to="/job-posts">All Job Post</Link></div>
+                          
                               </>
                             }
                           </div>

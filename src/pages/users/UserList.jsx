@@ -8,38 +8,9 @@ import moment from 'moment/moment'
 import BlockUserModal from '../../components/Modals/BlockUserModal'
 
 const UserList = () => {
-  const dispatch = useDispatch();
-  const [showBlockModal, setShowBlockModal] = useState(false);
-  const openModal = () => setShowBlockModal(true)
-  const closeModal = () => setShowBlockModal(false)
-  const [pageNumber, setPageNumber] = useState(1);
-  const [limit, setLimit] = useState(10);
-  let optionsData = {
-    "limit": limit,
-    "page": pageNumber,
-  }
-
-  const { users, isLoading, isError, isSuccess, message } = useSelector((state) => state.user)
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    const elem = document.activeElement;
-    if (elem) {
-      elem?.blur();
-    }
-    if (e.target.value) setLimit(e.target.value);
-  };
-
-  const handlePageNumber = (pageNumber) => {
-    setPageNumber(pageNumber);
-  }
-
-  useEffect(() => {
-    dispatch(getAllUsers(optionsData))
-  }, [pageNumber, limit])
-
-  if (isLoading) return <Loader />
-
+  const users = [{
+    id: 1
+}]
   return (
     <div className='flex h-screen overflow-hidden'>
       <Sidebar />
@@ -60,6 +31,9 @@ const UserList = () => {
                 </div>
               </div>
             </div>
+            <div className='flex justify-end'>
+                            <button className='bg-[#2626ea] text-white p-2 rounded-md'>Add User</button>
+                        </div>
             <div className='flex flex-wrap justify-between items-center'>
               <div className='py-4 flex items-center'>
                 <div className="relative">
@@ -175,7 +149,7 @@ const UserList = () => {
           </div>
         </div>
       </div>
-      {showBlockModal && <BlockUserModal closeModal={closeModal} setShowBlockModal={setShowBlockModal} />}
+      {/* {showBlockModal && <BlockUserModal closeModal={closeModal} setShowBlockModal={setShowBlockModal} />} */}
     </div>
   )
 }

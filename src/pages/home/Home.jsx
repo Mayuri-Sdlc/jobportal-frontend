@@ -139,7 +139,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
-        Home
+        
     </div>
 }
 export default Home

@@ -6,11 +6,23 @@ import { useEffect } from 'react'
 import { getAllUsers } from '../../features/user/userSlice'
 import moment from 'moment/moment'
 import BlockUserModal from '../../components/Modals/BlockUserModal'
+import { apiGET, apiPOST } from '../../utils/apiHelper'
 
 const UserList = () => {
   const users = [{
     id: 1
 }]
+const [allUsers,setAllUsers] = useState([])
+
+const getAllUsers = async()=>{
+const response = await apiPOST(`/users`)
+console.log("Users",response)
+}
+
+useEffect(()=>{
+  getAllUsers()
+},[])
+
   return (
     <div className='flex h-screen overflow-hidden'>
       <Sidebar />

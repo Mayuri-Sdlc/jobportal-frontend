@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 import DateTime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+import { toast } from 'react-toastify';
+import { apiPOST } from '../../utils/apiHelper';
 
 const AddEventModal = ({ isOpen, onRequestClose }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [dateTime, setDateTime] = useState(new Date());
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    const eventData = {
-      name,
-      description,
-      dateTime,
+    const payload = {
+      name:name,
+      desc:description,
+      datetime:dateTime,
     };
-    console.log(eventData);
-    // Handle the event data submission logic here
+    console.log(payload);
+    const response = await apiPOST(`/events/add`,payload)
+    console.log("Add event",response);
+    if (response?.data?.status==200) {
+      toast.success('Event added successfully');
+    } else {
+      toast.error('Failed to add event',);
+    }
     onRequestClose(); // Close the modal after submission
   };
 

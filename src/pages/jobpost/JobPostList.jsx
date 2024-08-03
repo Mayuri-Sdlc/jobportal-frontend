@@ -7,12 +7,26 @@ import AddJobPostModal from '../../components/Modals/AddJobPostModal'
 
 const JobPostList = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    const [allJobPosts,setAllJobPosts] = useState([])
+    console.log("UUU",allJobPosts)
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
     const jobposts = [{
         id: 1
     }]
+
+   
+const getAllJobPosts = async()=>{
+const response = await apiGET(`/events/getall`)
+if(response.data.status === 200){
+    setAllJobPosts(response.data.data)
+}
+console.log("Events",response)
+}
+
+useEffect(()=>{
+    getAllJobPosts()
+},[isModalOpen])
     return (
         <div className='flex h-screen overflow-hidden'>
             <Sidebar />

@@ -23,7 +23,7 @@ const publicPages = [
 
 const adminPages = [
   { exact: true, path: "/admin/home", element: Home },
-  { exact: true, path: "/admin/dashboard", element: AdminDashboard },
+  { exact: true, path: "/admin/dashboard", element: UserList },
   { exact: true, path: "/admin/users", element: UserList },
   { exact: true, path: "/admin/all-companies", element: CompanyList },
   { exact: true, path: "/admin/events", element: EventList },

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import { components } from 'react-select';
+import { apiPOST } from '../../utils/apiHelper';
+import { toast } from 'react-toastify';
 
 // Custom component to show the remove icon
 const MultiValueRemove = (props) => {
@@ -23,14 +25,23 @@ const AddJobPostModal = ({ isOpen, onRequestClose }) => {
     // Add more options as needed
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    const jobData = {
-      title,
-      description,
-      skills: skills.map(skill => skill.value),
+    
+    const payload = {
+      name:title,
+      desc:description,
+      skills: skills.map(skill => skill.value).join(', '),
+      eventId:"2",
     };
-    console.log(jobData);
+    console.log(payload);
+    const response = await apiPOST(`/jobpost/add`,payload)
+    console.log("Add event",response);
+    if (response?.status==200) {
+      toast.success('Job post added successfully');
+    } else {
+      toast.error('Failed to add job post',);
+    }
     // Handle the job data submission logic here
     onRequestClose(); // Close the modal after submission
   };

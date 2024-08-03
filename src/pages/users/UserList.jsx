@@ -11,17 +11,25 @@ const UserList = () => {
     id: 1
 }]
 const [allUsers,setAllUsers] = useState([])
+const [loading,setLoading]= useState(false)
+
 console.log("All users",allUsers)
 const getAllUsers = async()=>{
+  setLoading(true)
 const response = await apiPOST(`/users/getall`)
 if(response?.data?.status==200){
   setAllUsers(response?.data?.data)
+  setLoading(false)
 }
+setLoading(false)
 }
 
 useEffect(()=>{
   getAllUsers()
 },[])
+
+if(loading)return <Loader/>
+
 
   return (
     <div className='flex h-screen overflow-hidden'>
